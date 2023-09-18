@@ -10,14 +10,14 @@ pipeline {
 
         stage('Build Frontend') {
             steps {
-                cmd  'cd frontend '
-                cmd  'npm install && npm run build'
+                bat  'cd frontend '
+                bat 'npm install && npm run build'
             }
         }
 
         stage('Build Backend') {
             steps {
-                cmd  'cd backend && pip install -r requirements.txt && python manage.py collectstatic --noinput'
+                bat  'cd backend && pip install -r requirements.txt && python manage.py collectstatic --noinput'
             }
         }
 
