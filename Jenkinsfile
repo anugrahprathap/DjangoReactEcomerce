@@ -10,8 +10,7 @@ pipeline {
 
         stage('Build Frontend') {
             steps {
-                bat  'cd frontend '
-                bat ' npm cache clean --force'
+                bat  'cd frontend/'
                 bat 'npm install'
                 bat 'npm run build'
             }
