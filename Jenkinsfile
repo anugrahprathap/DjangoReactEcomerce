@@ -9,8 +9,8 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('frontend'){
-                    powershell 'npm cache clean'
-                    powershell 'npm install'
+                    bat 'npm cache clean'
+                    bat 'npm install'
                     powershell 'npm run build'
                 }
             }
@@ -18,8 +18,8 @@ pipeline {
         stage('Build Backend') {
             steps {
                 dir('backend'){
-                    powershell  'python -m pip install -r requirements.txt'
-                    powershell 'python manage.py collectstatic --noinput'
+                    bat  'python -m pip install -r requirements.txt'
+                    bat 'python manage.py collectstatic --noinput'
                 }
                 
             }
