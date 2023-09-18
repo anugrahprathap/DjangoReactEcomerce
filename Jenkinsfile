@@ -23,7 +23,7 @@ pipeline {
         stage('Build Backend') {
             steps {
                 dir('backend'){
-                    bat  'C:/Users/Anugrah/AppData/Local/Microsoft/WindowsApps/python3.10.exe -m pip install -r requirements.txt && C:/Users/Anugrah/AppData/Local/Microsoft/WindowsApps/python3.10.exe manage.py collectstatic --noinput'
+                    bat  'python -m pip install -r requirements.txt && python manage.py collectstatic --noinput'
                 }
                 
             }
