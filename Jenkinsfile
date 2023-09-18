@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        python = "C:/Users/Anugrah/AppData/Local/Microsoft/WindowsApps/python3.10.exe"
+            }
     stages {
         stage('Checkout') {
             steps {
