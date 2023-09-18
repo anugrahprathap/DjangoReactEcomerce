@@ -21,7 +21,10 @@ pipeline {
 
         stage('Build Backend') {
             steps {
-                bat  'cd backend && pip install -r requirements.txt && python manage.py collectstatic --noinput'
+                dir('backend'){
+                    bat  'pip install -r requirements.txt && python manage.py collectstatic --noinput'
+                }
+                
             }
         }
 
