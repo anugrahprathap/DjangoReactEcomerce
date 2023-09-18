@@ -9,9 +9,9 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('frontend'){
-                    bat 'npm cache clean'
+                    
                     bat 'npm install'
-                    powershell 'npm run build'
+                    bat 'npm run build'
                 }
             }
         }
