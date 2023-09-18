@@ -23,8 +23,8 @@ pipeline {
         stage('Build Backend') {
             steps {
                 dir('backend'){
-                    powershell  'python -m pip install -r requirements.txt'
-                    powershell 'python manage.py collectstatic --noinput'
+                    bat  'python -m pip install -r requirements.txt'
+                    bat 'python manage.py collectstatic --noinput'
                 }
                 
             }
