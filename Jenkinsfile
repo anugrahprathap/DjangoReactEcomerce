@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         // Specify the Python tool installation name
-        nodejs 'Python3'
+        jdk name: 'Python3', type: 'jdk'
     }
 
     stages {
