@@ -10,9 +10,12 @@ pipeline {
 
         stage('Build Frontend') {
             steps {
-                bat  'cd frontend/'
-                bat 'npm install'
-                bat 'npm run build'
+                dir('frontend'){
+                    bat 'npm install'
+                    bat 'npm run build'
+                }
+    
+                
             }
         }
 
