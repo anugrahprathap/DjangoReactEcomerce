@@ -16,7 +16,7 @@
   .edit-address-form {
     display: flex;
     flex-direction: column; /* Arrange child elements in a column */
-    align-items:end;
+    align-items:center;
     
   }
   
