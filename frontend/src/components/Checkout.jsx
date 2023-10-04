@@ -43,26 +43,24 @@ function Checkout() {
     }
   };
 
-  
+  const fetchProductDetails = useCallback(async () => {
+    // Fetch product details based on the product ID
+    try {
+      
+      const response = await axios.get(`http://127.0.0.1:8000/api/productdetail/${productId}/`);
+
+      if (response.status === 200) {
+        setProductDetails(response.data);
+      }
+    } catch (error) {
+      console.error('Error fetching product details:', error);
+    }
+  },[productId]);
 
   useEffect(() => {
-
-    const fetchProductDetails = async () => {
-      // Fetch product details based on the product ID
-      try {
-        
-        const response = await axios.get(`http://127.0.0.1:8000/api/productdetail/${productId}/`);
-  
-        if (response.status === 200) {
-          setProductDetails(response.data);
-        }
-      } catch (error) {
-        console.error('Error fetching product details:', error);
-      }
-    };
     // Fetch the initial data when the component mounts
     fetchAddressData();
-     // Fetch product details
+    fetchProductDetails(); // Fetch product details
 
     // Poll for updates every 10 seconds (adjust the interval as needed)
     const intervalId = setInterval(() => {
