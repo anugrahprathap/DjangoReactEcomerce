@@ -19,13 +19,16 @@ from restApi import views as apiView
 from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register(r'products', apiView.ProductViewSet, basename='product')
-router.register(r'cart', apiView.CartItemViewSet)
-router.register(r'orders', apiView.OrderViewSet)
+router.register(r'cart', apiView.AddToCartView,basename='cart')
+# router.register(r'orders', apiView.OrderViewSet)
 router.register(r'productdetail', apiView.ProductDetailViewSet, basename='productdetail')
+router.register(r'address', apiView.AddressViewSet, basename='address')
+router.register(r"orders", apiView.OrderCreateView, basename="order")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('restApi.api.urls')),
-    path('accounts/', include('allauth.urls')),
+    # path('accounts/', include('allauth.urls')),
     path('api/', include(router.urls)),
+    
 ]

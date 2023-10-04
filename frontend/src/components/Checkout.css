@@ -1,0 +1,124 @@
+/* Checkout.css */
+
+/* Container for the whole checkout page */
+.checkout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Header styles */
+  .checkout-header h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Product details section */
+  .product-details {
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .product-card p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* Address section */
+  .address-section {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .address-heading {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .address-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .address-line {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .address-details {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .address-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .edit-address-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  /* Add address button */
+  .add-address-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  /* Checkout button */
+  .checkout-button-section {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .checkout-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  /* Add this to your Checkout.css */
+
+/* Product image styles */
+.product-image {
+    max-width: 60%;
+    height: 250px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  .quantity-select {
+    width: 50px; /* Adjust the width as needed */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }

@@ -1,0 +1,51 @@
+/* EditAddressForm.css */
+
+/* Container styling */
+.edit-address-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+  }
+  
+  /* Form styling */
+  .edit-address-form {
+    display: flex;
+    flex-direction: column; /* Arrange child elements in a column */
+    align-items:end;
+    
+  }
+  
+  .edit-address-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    align-self: start;
+  }
+  
+  .edit-address-form input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+   
+  }
+  
+  .edit-address-form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .edit-address-form button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './style.css'
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -12,6 +13,7 @@ function ProductList() {
     // Use Axios to fetch products from the Django backend
     axios.get(apiUrl)
       .then((response) => {
+        console.log(response);
         setProducts(response.data);
       })
       .catch((error) => {
@@ -20,15 +22,33 @@ function ProductList() {
   }, []);
 
   return (
-    <div>
-      <h2>Product List</h2>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <Link to={`/product/${product.id}`}>{product.name}</Link>
-          </li>
-        ))}
-      </ul>
+    <div className='content'>
+      
+      
+      
+      {products.map((product) => (
+    <div key={product.ProductId} className='box'>
+        <Link to={`/product/${product.ProductId}`} className='link'>
+            <div className='box-content'>
+                <h3>{product.ProductTitle}</h3>
+            
+                {product.Image && (
+                    <img src={product.Image} alt={product.ProductId} className='box-img'/>
+                )}
+            </div>
+            <div className='product-btn'>
+                <div className='product-buy'>
+                    Buy Now
+                </div>
+                <div className='product-cart'>
+                    Add To Cart
+                </div>
+            </div>
+        </Link>
+    </div>
+))}
+
+     
     </div>
   );
 }

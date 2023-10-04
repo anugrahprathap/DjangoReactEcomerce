@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -54,6 +56,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'restApi',
     'corsheaders',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -151,8 +154,28 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
     ],
+   
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        ],
     # ... other settings ...
 }
 
 
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+    'SLIDING_TOKEN_LIFETIME': timedelta(days=7),
+    'SLIDING_TOKEN_REFRESH_GRACE_PERIOD': timedelta(days=1),
+    'SLIDING_TOKEN_REFRESH_EPOCHAL': True,
+    'SLIDING_TOKEN_LIFETIME': timedelta(days=7),
+}
 
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+LOGIN_URL = '/api/login/'
+# AUTH_USER_MODEL = 'restApi.CustomUser'

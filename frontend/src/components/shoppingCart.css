@@ -1,0 +1,88 @@
+/* shoppingCart.css */
+
+/* Style the container */
+.shopping-cart-container {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  /* Style the cart header */
+  .cart-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Style individual cart item */
+  .cart-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style the product image */
+  .product-image {
+    max-width: 100px;
+    margin-right: 20px;
+  }
+  
+  /* Style the product info */
+  .product-info {
+    flex: 1;
+  }
+  
+  /* Style the product title */
+  .product-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Style the quantity */
+  .quantity {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  /* Style the remove button */
+  .remove-button {
+    background-color: #e76157;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  /* Add some spacing */
+  .cart-item + .cart-item {
+    margin-top: 20px;
+  }
+  /* shoppingCart.css */
+
+.custom-checkout-button {
+    background-color: #471fda; /* Set your desired background color */
+    color: #ffffff; /* Set the text color */
+    border: none;
+    height: 80px;
+    width: 250px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    /* Add any other styles you want */
+  }
+  
+  .custom-checkout-button:hover {
+    background-color: #5936d6; /* Change the background color on hover */
+  }
+  
