@@ -11,12 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
-<<<<<<< HEAD
 from datetime import timedelta
 
-=======
-import os
->>>>>>> 7501e18e4bb883afcfc570eca3bc1d3f920f77e1
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -164,11 +160,6 @@ REST_FRAMEWORK = {
         ],
     # ... other settings ...
 }
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
 SIMPLE_JWT = {
