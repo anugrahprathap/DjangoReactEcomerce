@@ -1,6 +1,6 @@
 // Checkout.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useCallback  } from 'react';
 import AddressForm from './AddressForm';
 import EditAddressForm from './EditAddressForm';
 import axios from 'axios';
