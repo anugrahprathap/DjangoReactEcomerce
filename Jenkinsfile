@@ -12,6 +12,8 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('frontend'){
+                    bat 'npm install --save-dev @babel/plugin-proposal-private-property-in-object
+'
                     
                     bat 'npm install'
                     bat 'npm run build'
