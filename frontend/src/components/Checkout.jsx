@@ -70,7 +70,7 @@ function Checkout() {
 
     // Clean up the interval when the component unmounts
     return () => clearInterval(intervalId);
-  }, [id]); // Include productId in the dependency array
+  }, [id,fetchProductDetails]); // Include productId in the dependency array
 
   const handleEditAddress = (id) => {
     // Enable editing of the address
