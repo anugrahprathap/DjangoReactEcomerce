@@ -1,22 +1,30 @@
 pipeline {
     agent any
-
+    environment {
+        python = "C:/Users/Anugrah/AppData/Local/Microsoft/WindowsApps/python3.10.exe"
+            }
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-
         stage('Build Frontend') {
             steps {
-                sh 'cd frontend && cd frontend  && npm install && npm run build'
+                dir('frontend'){
+                    
+                    bat 'npm install'
+                    bat 'npm run build'
+                }
             }
         }
-
         stage('Build Backend') {
             steps {
-                sh 'cd backend && pip install -r requirements.txt && python manage.py collectstatic --noinput'
+                dir('backend'){
+                    bat  'python -m pip install -r requirements.txt'
+                    bat 'python manage.py collectstatic --noinput'
+                }
+                
             }
         }
 
