@@ -121,7 +121,7 @@ function Checkout() {
     
      
       const quantity = parseInt(document.getElementById('quantity').value);
-      const itemIds = [parseInt(productDetails.ProductId)];;
+      
 
   try {
     // Create an order with the selected address, product, quantity, and user ID
