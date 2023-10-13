@@ -44,6 +44,10 @@ class OrderSerializer(serializers.ModelSerializer):
         child=serializers.IntegerField(),  # Assuming item IDs are integers
         required=False
     )
+    quantity = serializers.ListField(
+        child=serializers.IntegerField(),  # Assuming item IDs are integers
+        required=False
+    )
     # product = ProductSerializer()
 
     class Meta:

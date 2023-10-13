@@ -86,14 +86,20 @@ border: 2px solid transparent;
     text-decoration: none;
     color: #0F1111;
 }
-.content{
+.content {
+    background: repeat scroll 0 0;
     display: flex;
     flex-wrap: wrap;
-    height: 100%;
-    justify-content: space-evenly;
     background-color: #e2e7e6;
-    color:#0F1111;
-}
+    flex-direction: row;
+    color: #0F1111;
+    height: 340px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+  }
+  
+  
 h1{
     font-size: 21px;
 }

@@ -129,7 +129,7 @@ function Checkout() {
       address: selectedAddressId,
       items: [productDetails.ProductId],
       total_price: productDetails.Price,
-      quantity: quantity, // Include the quantity in the request body
+      quantity: [parseInt(document.getElementById('quantity').value)], // Include the quantity in the request body
     }, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,

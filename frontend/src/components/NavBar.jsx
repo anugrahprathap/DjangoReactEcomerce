@@ -1,95 +1,119 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SearchIcon from '@mui/icons-material/Search';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import { useAuth } from '../AuthContext'; // Import the useAuth hook
-import { useState } from 'react';
 import axios from 'axios';
 
+import './Navbar.css'; // Import your custom CSS
+
 function Navbar() {
-  const { loggedIn,logout  } = useAuth();
-  const [searchQuery, setSearchQuery] = useState(''); 
+  const { loggedIn, logout } = useAuth();
+  const [searchQuery, setSearchQuery] = useState('');
   const [searchResult, setSearchResults] = useState('');
+  const [profileMenuAnchor, setProfileMenuAnchor] = useState(null); // State for the profile menu anchor element
+
+  const handleOpenProfileMenu = (event) => {
+    setProfileMenuAnchor(event.currentTarget); // Open the profile menu
+  };
+
+  const handleCloseProfileMenu = () => {
+    setProfileMenuAnchor(null); // Close the profile menu
+  };
+
   const handleLogout = () => {
-    // Call the logout function to log the user out
-    logout();
-  }; // Get the loggedIn status from the context
-  
+    logout(); // Logout when the "Logout" option is clicked
+    handleCloseProfileMenu(); // Close the profile menu after logout
+  };
+
   const handleSearch = (e) => {
-    console.log(searchQuery)
     e.preventDefault();
-    axios.get(`http://127.0.0.1:8000/api/products/search/?query=${searchQuery}`)
-    .then((response) => {
-        
+    axios
+      .get(`http://127.0.0.1:8000/api/products/search/?query=${searchQuery}`)
+      .then((response) => {
         setSearchResults(response.data);
-        console.log(searchResult)
-    })
-    .catch((error) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
         console.error('Error searching products:', error);
-    });
+      });
     console.log('Searching for:', searchQuery);
   };
 
   return (
-    <div className="navbar">
-      <Link to="/" className='link-nav'>
-        <div className="navbar-logo border">
-          Home
-        </div>
-      </Link>
-
-      <div className="search border">
-      
-        <input type="text"
-        onKeyUp={(e) => {
-          if (e.key === 'Enter') {
-            handleSearch(e);
-          }
-        }}
-        onChange={(e) => setSearchQuery(e.target.value)} className="" />
-        <div onClick={handleSearch} className="search-icon">
-          <FontAwesomeIcon icon={faSearch} />
-        </div>
-        
-      </div>
-
-      {loggedIn ? ( // Conditionally render based on loggedIn status
-        // User is logged in, provide a link to the profile
-        <Link to="/profile" className='link-nav'>
-          <div className="nav-profile border">
-            <p>
-              <span className="nav-span">Profile</span>
-            </p>
-            <p>
-            <span className='nav-return' onClick={handleLogout}>Logout</span>
-            </p>
-          </div>
+    <AppBar className="AppBar" position="sticky">
+      <Toolbar className='toolbar'>
+        <Link to="/" className="link-nav">
+          <Typography variant="h6" className="navbar-logo border">
+            Home
+          </Typography>
         </Link>
-      ) : (
-        // User is not logged in, provide a link to the login page
-        <Link to="/login" className='link-nav'>
-          <div className="nav-signin border">
-            <p>
-              <span className="nav-span">Hello, sign in</span>
-            </p>
-          </div>
-        </Link>
-      )}
-      <Link to="/orders" className='link-nav'>
-      <div className="nav-return border">
-        <span className="nav-return">Returns</span>
-        <p className="nav-sec"> & Orders</p>
-      </div>
-      </Link>
-      
 
-      <Link to="/cart" className='link-nav'>
-        <div className="nav-cart border">
-          <FontAwesomeIcon icon={faShoppingCart} className='nav-cart-i' />
-          <p>Cart</p>
+        <div className="search border">
+          <InputBase
+            type="text"
+            onKeyUp={(e) => {
+              if (e.key === 'Enter') {
+                handleSearch(e);
+              }
+            }}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="search-input"
+            fullWidth={true}
+          />
+          <IconButton onClick={handleSearch} className="search-icon">
+            <SearchIcon />
+          </IconButton>
         </div>
-      </Link>
-    </div>
+
+        {loggedIn ? (
+          <div>
+            <Button
+              onClick={handleOpenProfileMenu}
+              className="nav-profile border"
+            >
+              Profile
+            </Button>
+            <Menu
+              anchorEl={profileMenuAnchor}
+              open={Boolean(profileMenuAnchor)}
+              onClose={handleCloseProfileMenu}
+            >
+              <MenuItem onClick={handleLogout}>
+                Logout
+                <ExitToAppIcon style={{ marginLeft: '8px' }} />
+              </MenuItem>
+              {/* Add other profile management options as MenuItem components */}
+            </Menu>
+          </div>
+        ) : (
+          <Link to="/login" className="link-nav">
+            <Typography variant="h6" className="nav-signin border">
+              Hello, sign in
+            </Typography>
+          </Link>
+        )}
+        <Link to="/orders" className="link-nav">
+          <Typography variant="h6" className="nav-return border">
+            Returns & Orders
+          </Typography>
+        </Link>
+        <Link to="/cart" className="link-nav">
+          <Button startIcon={<ShoppingCartIcon />} className="nav-cart border">
+            Cart
+          </Button>
+        </Link>
+      </Toolbar>
+    </AppBar>
   );
 }
 

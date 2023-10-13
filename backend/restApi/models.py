@@ -90,7 +90,7 @@ class Order(models.Model):
     address = models.ForeignKey(Address, on_delete=models.CASCADE,default=None)
     items = models.ManyToManyField(Products)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
-    quantity = models.PositiveIntegerField(default=None)
+    quantity = models.ManyToManyField(default=None)
     created_at = models.DateTimeField(default=calculate_default_date())
     updated_at = models.DateTimeField(default=None)
     status = models.CharField(max_length=300,default="pending")

@@ -6,20 +6,17 @@ from .serializers import ProductSerializer,CartItemSerializer,OrderSerializer
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
-import imghdr
-import base64
+
 from rest_framework.viewsets import ViewSet
 from rest_framework.decorators import action
 from django.conf import settings
 User = settings.AUTH_USER_MODEL
 from django.db import models
 from .models import Products
-import pandas as pd
-from PIL import Image
+
 import io
 from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
-from django.views import View
+
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import CartItem, Products
@@ -40,28 +37,34 @@ class ProductViewSet(viewsets.ModelViewSet):
         # Get the search query from the request parameters\
         
         query = request.query_params.get('query')
-        
+      
         # Perform the search operation using the search filter
         queryset = self.filter_queryset(self.get_queryset())
         queryset = queryset.filter(ProductTitle__icontains=query)
+        
         
         # Serialize the search results
         serializer = self.get_serializer(queryset, many=True)
         
         return Response(serializer.data)
     def list(self, request):
+        catogary = request.query_params.get('category')
         
-        products = Products.objects.all()
+        # products = self.filter_queryset(self.get_queryset())
+        product = products = self.filter_queryset(self.get_queryset()).filter(ProductType=catogary)
+
+        print(catogary,"*"*90)
         product_data_list = []
         count = 0
         for product in products:
             count = count+1
             serializer = ProductSerializer(product)
+            # print(serializer.data)
 
             
 
             product_data_list.append(serializer.data)
-            if(count>20):
+            if(count>10):
                 break
 
         return Response(product_data_list)
@@ -277,17 +280,18 @@ class OrderCreateView(ModelViewSet):
             created_at = calculate_default_date()
             updated_at = calculate_default_date()
             status = "Pending"
-
+            print("*"*87,items, quantity)
             order = Order.objects.create(
                 user=user,
                 address=address,
                 total_price=total_price,
-                quantity=quantity,
+               
                 status=status,
                 created_at = created_at,
                 updated_at= updated_at,
             )
             order.items.set(items)
+            order.quantity.set(quantity)
             order.save()
             print(order.id)
             response_data = {
