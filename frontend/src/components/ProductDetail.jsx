@@ -4,6 +4,8 @@ import {useParams} from 'react-router-dom'
 import { Link } from 'react-router-dom';
 
 function ProductDetail({ match }) {
+  const config = require('./config.json');
+  const serverAddress = config.serverAddress;
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -19,7 +21,7 @@ function ProductDetail({ match }) {
         quantity: quantity
     };
       // Send a POST request to your Django API to add the product to the cart
-      axios.post(`http://127.0.0.1:8000/api/cart/add_to_cart/`, requestData, {
+      axios.post(`${serverAddress}/api/cart/add_to_cart/`, requestData, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -40,7 +42,7 @@ function ProductDetail({ match }) {
   };
   useEffect(() => {
     
-    axios.get(`http://127.0.0.1:8000//api/productdetail/${id}`)
+    axios.get(`${serverAddress}/api/productdetail/${id}`)
       .then((response) => {
         console.log('*'*89)
         console.log(response.data)

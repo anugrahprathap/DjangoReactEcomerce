@@ -17,6 +17,8 @@ import axios from 'axios';
 import './Navbar.css'; // Import your custom CSS
 
 function Navbar() {
+  const config = require('./config.json');
+  const serverAddress = config.serverAddress;
   const { loggedIn, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResult, setSearchResults] = useState('');
@@ -38,7 +40,7 @@ function Navbar() {
   const handleSearch = (e) => {
     e.preventDefault();
     axios
-      .get(`http://127.0.0.1:8000/api/products/search/?query=${searchQuery}`)
+      .get(`${serverAddress}/api/products/search/?query=${searchQuery}`)
       .then((response) => {
         setSearchResults(response.data);
         console.log(response.data);

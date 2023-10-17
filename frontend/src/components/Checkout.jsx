@@ -9,6 +9,8 @@ import './Checkout.css'; // Import your CSS file
 import { useNavigate } from 'react-router-dom';
 
 function Checkout() {
+  const config = require('./config.json');
+  const serverAddress = config.serverAddress;
   const navigate = useNavigate();
   const { productId } = useParams();
   const { id } = useParams();
@@ -22,7 +24,7 @@ function Checkout() {
   const fetchAddressData = async () => {
     // Fetch the user's address when the component mounts
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/address/', {
+      const response = await axios.get(`${serverAddress}/api/address/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -47,7 +49,7 @@ function Checkout() {
     // Fetch product details based on the product ID
     try {
       
-      const response = await axios.get(`http://127.0.0.1:8000/api/productdetail/${productId}/`);
+      const response = await axios.get(`${serverAddress}/api/productdetail/${productId}/`);
 
       if (response.status === 200) {
         setProductDetails(response.data);
@@ -125,7 +127,7 @@ function Checkout() {
 
   try {
     // Create an order with the selected address, product, quantity, and user ID
-    const response = await axios.post('http://127.0.0.1:8000/api/orders/post/', {
+    const response = await axios.post(`${serverAddress}/api/orders/post/`, {
       address: selectedAddressId,
       items: [productDetails.ProductId],
       total_price: productDetails.Price,

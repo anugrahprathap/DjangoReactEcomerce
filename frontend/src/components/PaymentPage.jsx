@@ -17,6 +17,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function PaymentPage() {
+  const config = require('./config.json');
+  const serverAddress = config.serverAddress;
   const navigate = useNavigate();
   const { orderId } = useParams();
   const [selectedPayment, setSelectedPayment] = useState('');
@@ -45,7 +47,7 @@ function PaymentPage() {
     try {
       // Send the order ID to the backend with a PUT request to update the status
       const response = await axios.put(
-        `http://127.0.0.1:8000/api/orders/${orderId}/update_order/`, // Replace with your endpoint URL
+        `${serverAddress}/api/orders/${orderId}/update_order/`, // Replace with your endpoint URL
         { status: 'success' }, // Update the status to 'success'
         {
           headers: {

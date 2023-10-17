@@ -3,11 +3,13 @@ import axios from 'axios';
 import './shoppingCart.css'; // Import your CSS file
 
 function ShoppingCart() {
+  const config = require('./config.json');
+  const serverAddress = config.serverAddress;
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     // Fetch cart items from your API
-    axios.get('http://127.0.0.1:8000/api/cart/get_queryset/', {
+    axios.get(`${serverAddress}/api/cart/get_queryset/`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       },

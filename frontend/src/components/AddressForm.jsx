@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function AddressForm({ onSuccess }) {
+
+  const config = require('./config.json');
+  const serverAddress = config.serverAddress;
   const [addressData, setAddressData] = useState({
     address_line1: '',
     address_line2: '',
@@ -19,7 +22,7 @@ function AddressForm({ onSuccess }) {
     e.preventDefault();
 
     // Send a POST request to your Django API to create the address
-    axios.post(`http://127.0.0.1:8000/api/address/create_address/`, addressData, {
+    axios.post(`${serverAddress}/api/address/create_address/`, addressData, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`,

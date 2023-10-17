@@ -3,6 +3,8 @@ import axios from 'axios';
 import './orderHistory.css'; // Import your CSS file
 
 function OrderHistory() {
+  const config = require('./config.json');
+  const serverAddress = config.serverAddress;
   const [orders, setOrders] = useState([]);
   const style = {
     display: 'flex',
@@ -12,7 +14,7 @@ function OrderHistory() {
   useEffect(() => {
     // Fetch order history from your API
     axios
-      .get('http://127.0.0.1:8000/api/orders/myOrders', {
+      .get(`${serverAddress}api/orders/myOrders`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

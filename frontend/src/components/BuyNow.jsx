@@ -13,9 +13,11 @@ function BuyNowButton({ product }) {
       product_id: product_id,
       quantity: quantity,
     };
+  const config = require('./config.json');
+  const serverAddress = config.serverAddress;
 
     // Send a POST request to your Django API to add the product to the cart
-    axios.post(`http://127.0.0.1:8000/api/cart/add_to_cart/`, requestData, {
+    axios.post(`${serverAddress}/api/cart/add_to_cart/`, requestData, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
