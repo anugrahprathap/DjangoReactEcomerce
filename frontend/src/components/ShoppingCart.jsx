@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './shoppingCart.css'; // Import your CSS file
+import { Link } from 'react-router-dom';
 
 function ShoppingCart() {
   const config = require('./config.json');
@@ -55,9 +56,11 @@ function ShoppingCart() {
         </div>
       ))}
       <center>
+      <Link to="/CartCheckout">
       <button className="custom-checkout-button" >
         Checkout
       </button>
+      </Link>
       </center>
     </div>
   );

@@ -14,7 +14,7 @@ import OrderHistory from './components/OrderHistory';
 import Topwear from './components/Topwear'; // Import Topwear component
 import Electronics from './components/Electronics'; // Import Electronics component
 import Footwear from './components/Footwear'; // Import Footwear component
-
+import CartCheckout from './components/CartCheckout';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -40,6 +40,7 @@ function App() {
           <Route path="/editaddress/:addId" element={<EditAddressForm />} />
           <Route path="/payment/:orderId" element={<PaymentPage />} />
           <Route path="/orders" element={<OrderHistory />} />
+          <Route path="/CartCheckout" element={<CartCheckout />} />
         </Routes>
       </div>
     </Router>

@@ -42,10 +42,9 @@ function ProductDetail({ match }) {
   };
   useEffect(() => {
     
-    axios.get(`${serverAddress}/api/productdetail/${id}`)
+    axios.get(`${serverAddress}/api/productdetail/${id}/`)
       .then((response) => {
-        console.log('*'*89)
-        console.log(response.data)
+      
         setProduct(response.data);
         setLoading(false);
       })

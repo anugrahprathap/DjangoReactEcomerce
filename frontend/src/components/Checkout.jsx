@@ -48,8 +48,8 @@ function Checkout() {
   const fetchProductDetails = useCallback(async () => {
     // Fetch product details based on the product ID
     try {
-      const address = `${serverAddress}/api/productdetail/${productId}/`;
-      const response = await axios.get(address+"/");
+     
+      const response = await axios.get(`${serverAddress}/api/productdetail/${productId}/`);
       
 
       if (response.status === 200) {
