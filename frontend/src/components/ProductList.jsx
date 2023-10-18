@@ -50,7 +50,7 @@ const StyledBoxContent = styled('div')({
 
 const StyledBoxImg = styled('img')({
   /* Add your box image styles here */
-  marginTop: '20px',
+
   height: '150px',
   width: '80%',
   marginTop: '5px',

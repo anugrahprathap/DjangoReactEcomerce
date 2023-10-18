@@ -39,6 +39,7 @@ ALLOWED_HOSTS = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',  
+    'http://localhost:3000',
       # Add your frontend's domain here
 ]
 # Application definition
@@ -179,3 +180,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 LOGIN_URL = '/api/login/'
 # AUTH_USER_MODEL = 'restApi.CustomUser'
+
+CORS_ALLOW_ALL_ORIGINS = True

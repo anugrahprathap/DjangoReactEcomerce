@@ -78,6 +78,7 @@ from django.contrib.auth.models import User  # Assuming you're using Django's bu
 
 from django.utils import timezone
 
+
 def calculate_default_date():
     # You can perform custom logic here to calculate the default date
     date = timezone.now() + timezone.timedelta(days=7)
@@ -90,7 +91,7 @@ class Order(models.Model):
     address = models.ForeignKey(Address, on_delete=models.CASCADE,default=None)
     items = models.ManyToManyField(Products)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
-    quantity = list
+    quantity =  models.JSONField(default=list)
     created_at = models.DateTimeField(default=calculate_default_date())
     updated_at = models.DateTimeField(default=None)
     status = models.CharField(max_length=300,default="pending")

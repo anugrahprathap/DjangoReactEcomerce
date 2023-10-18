@@ -207,7 +207,7 @@ from rest_framework import status as sts
 from django.db.models import Q
 class OrderCreateView(ModelViewSet):
     queryset = Order.objects.all()
-    @action(detail=False, methods=['get'])
+    @action(detail=False, methods=['GET'])
     def myOrders(self,request):
         # Get the user associated with the request
         user = self.request.user
@@ -280,18 +280,19 @@ class OrderCreateView(ModelViewSet):
             created_at = calculate_default_date()
             updated_at = calculate_default_date()
             status = "Pending"
+
             print("*"*87,items, quantity)
             order = Order.objects.create(
                 user=user,
                 address=address,
                 total_price=total_price,
-               
+               quantity=quantity,
                 status=status,
                 created_at = created_at,
                 updated_at= updated_at,
             )
             order.items.set(items)
-            order.quantity.set(quantity)
+           
             order.save()
             print(order.id)
             response_data = {

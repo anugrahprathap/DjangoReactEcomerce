@@ -14,7 +14,7 @@ function OrderHistory() {
   useEffect(() => {
     // Fetch order history from your API
     axios
-      .get(`${serverAddress}api/orders/myOrders`, {
+      .get(`${serverAddress}/api/orders/myOrders/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

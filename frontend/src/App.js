@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import ProductList from './components/ProductList';
+
 import ProductDetail from './components/ProductDetail';
 import ShoppingCart from './components/ShoppingCart';
 import Navbar from './components/NavBar';
@@ -19,7 +19,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import ResponsiveAppBar from './components/NavBar';
+
 
 function App() {
   return (

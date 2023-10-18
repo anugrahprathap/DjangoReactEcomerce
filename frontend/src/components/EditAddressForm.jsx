@@ -6,6 +6,9 @@ import './EditAddressForm.css'; // Import your CSS file
 
 
 function EditAddressForm({ address, onSuccess }) {
+
+  const config = require('./config.json');
+  const serverAddress = config.serverAddress;
   const [addressData, setAddressData] = useState({
     address_line1: address.address_line1,
     address_line2: address.address_line2 || '',
@@ -24,7 +27,7 @@ function EditAddressForm({ address, onSuccess }) {
 
     // Send a PUT request to update the address
     axios
-      .put(`http://127.0.0.1:8000/api/address/${address.id}/edit_address/`, addressData, {
+      .put(`${serverAddress}/api/address/${address.id}/edit_address/`, addressData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

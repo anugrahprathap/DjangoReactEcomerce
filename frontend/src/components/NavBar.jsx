@@ -43,7 +43,8 @@ function Navbar() {
       .get(`${serverAddress}/api/products/search/?query=${searchQuery}`)
       .then((response) => {
         setSearchResults(response.data);
-        console.log(response.data);
+        console.log(searchResult);
+      
       })
       .catch((error) => {
         console.error('Error searching products:', error);

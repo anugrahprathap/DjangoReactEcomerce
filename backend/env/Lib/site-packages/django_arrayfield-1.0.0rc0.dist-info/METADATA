@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: django-arrayfield
+Version: 1.0.0rc0
+Summary: Django dependency providing ArrayField<Type> functionality
+License: ./LICENSE.txt
+Author: Michał Gawor
+Author-email: michal@clarin.eu
+Maintainer: Michał Gawor
+Maintainer-email: michal@clarin.eu
+Requires-Python: >=3.10
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: Django (==4.1.7)
+Requires-Dist: django-debug-toolbar (==4.0.0)
+Project-URL: changelog, https://github.com/clarin-eric/djangoarrayfield/blob/main/CHANGELOG.md
+Project-URL: documentation, https://github.com/clarin-eric/djangoarrayfield/blob/main/README.md
+Project-URL: homepage, https://centres.clarin.eu/
+Project-URL: repository, https://github.com/clarin-eric/djangoarrayfield
