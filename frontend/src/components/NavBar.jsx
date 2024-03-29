@@ -13,16 +13,16 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useAuth } from '../AuthContext'; // Import the useAuth hook
 import axios from 'axios';
-
 import './Navbar.css'; // Import your custom CSS
 
-function Navbar() {
+function Navbar(props) {
   const config = require('./config.json');
   const serverAddress = config.serverAddress;
   const { loggedIn, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResult, setSearchResults] = useState('');
   const [profileMenuAnchor, setProfileMenuAnchor] = useState(null); // State for the profile menu anchor element
+  const [showSearchResults, setShowSearchResults] = useState(false); // Flag to control s
 
   const handleOpenProfileMenu = (event) => {
     setProfileMenuAnchor(event.currentTarget); // Open the profile menu
@@ -44,6 +44,8 @@ function Navbar() {
       .then((response) => {
         setSearchResults(response.data);
         console.log(searchResult);
+        setShowSearchResults(true);
+        props.onSearchResults(response.data); 
       
       })
       .catch((error) => {

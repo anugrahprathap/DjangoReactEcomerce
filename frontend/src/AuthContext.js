@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     // Your logic to set the loggedIn state, typically from local storage, should be here.
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');  
     setLoggedIn(!!token); // Assuming you set 'loggedIn' based on the presence of a token
   }, []);
 

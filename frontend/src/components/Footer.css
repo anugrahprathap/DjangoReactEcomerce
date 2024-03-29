@@ -1,0 +1,14 @@
+
+.foot-p4{
+    background-color:#131A22;
+    height: 77px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.foot-p4 a{
+    text-decoration: none;
+    color: white;
+}
