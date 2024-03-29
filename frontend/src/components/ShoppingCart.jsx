@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './shoppingCart.css'; // Import your CSS file
 import { Link } from 'react-router-dom';
+import { useAuth } from '../AuthContext'; // Import the useAuth hook
 
 function ShoppingCart() {
   const config = require('./config.json');
   const serverAddress = config.serverAddress;
   const [cartItems, setCartItems] = useState([]);
+  const { loggedIn } = useAuth(); // Get the loggedIn status from the AuthContext
 
   useEffect(() => {
+    if (!loggedIn) return; // Don't fetch cart items if user is not logged in
     // Fetch cart items from your API
     axios.get(`${serverAddress}/api/cart/get_queryset/`, {
       headers: {
@@ -22,11 +25,19 @@ function ShoppingCart() {
       .catch(error => {
         console.error('Error fetching cart items:', error);
       });
-  }, []);
+  }, [loggedIn]); // Run useEffect when loggedIn status changes
 
   const handleRemoveItem = (itemId) => {
     // Implement logic to remove the item from the cart
   };
+
+  if (!loggedIn) {
+    return (
+      <div className="shopping-cart-container">
+        <h2 className="cart-header">Please log in to view your shopping cart.</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="shopping-cart-container">
@@ -56,11 +67,11 @@ function ShoppingCart() {
         </div>
       ))}
       <center>
-      <Link to="/CartCheckout">
-      <button className="custom-checkout-button" >
-        Checkout
-      </button>
-      </Link>
+        <Link to="/CartCheckout">
+          <button className="custom-checkout-button" >
+            Checkout
+          </button>
+        </Link>
       </center>
     </div>
   );

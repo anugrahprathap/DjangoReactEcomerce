@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import InputBase from '@mui/material/InputBase';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import SearchIcon from '@mui/icons-material/Search';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { useAuth } from '../AuthContext'; // Import the useAuth hook
-import axios from 'axios';
-import './Navbar.css'; // Import your custom CSS
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import InputBase from "@mui/material/InputBase";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import SearchIcon from "@mui/icons-material/Search";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { useAuth } from "../AuthContext"; // Import the useAuth hook
+import axios from "axios";
+import "./Navbar.css"; // Import your custom CSS
 
 function Navbar(props) {
-  const config = require('./config.json');
+  const config = require("./config.json");
   const serverAddress = config.serverAddress;
   const { loggedIn, logout } = useAuth();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResult, setSearchResults] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResult, setSearchResults] = useState("");
   const [profileMenuAnchor, setProfileMenuAnchor] = useState(null); // State for the profile menu anchor element
   const [showSearchResults, setShowSearchResults] = useState(false); // Flag to control s
 
@@ -45,18 +45,17 @@ function Navbar(props) {
         setSearchResults(response.data);
         console.log(searchResult);
         setShowSearchResults(true);
-        props.onSearchResults(response.data); 
-      
+        props.onSearchResults(response.data);
       })
       .catch((error) => {
-        console.error('Error searching products:', error);
+        console.error("Error searching products:", error);
       });
-    console.log('Searching for:', searchQuery);
+    console.log("Searching for:", searchQuery);
   };
 
   return (
     <AppBar className="AppBar" position="sticky">
-      <Toolbar className='toolbar'>
+      <Toolbar className="toolbar">
         <Link to="/" className="link-nav">
           <Typography variant="h6" className="navbar-logo border">
             Home
@@ -67,7 +66,7 @@ function Navbar(props) {
           <InputBase
             type="text"
             onKeyUp={(e) => {
-              if (e.key === 'Enter') {
+              if (e.key === "Enter") {
                 handleSearch(e);
               }
             }}
@@ -95,9 +94,8 @@ function Navbar(props) {
             >
               <MenuItem onClick={handleLogout}>
                 Logout
-                <ExitToAppIcon style={{ marginLeft: '8px' }} />
+                <ExitToAppIcon style={{ marginLeft: "8px" }} />
               </MenuItem>
-              {/* Add other profile management options as MenuItem components */}
             </Menu>
           </div>
         ) : (
@@ -107,6 +105,7 @@ function Navbar(props) {
             </Typography>
           </Link>
         )}
+
         <Link to="/orders" className="link-nav">
           <Typography variant="h6" className="nav-return border">
             Returns & Orders

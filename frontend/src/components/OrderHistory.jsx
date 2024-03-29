@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './orderHistory.css'; // Import your CSS file
+import { useAuth } from '../AuthContext'; // Import the useAuth hook
 
 function OrderHistory() {
   const config = require('./config.json');
   const serverAddress = config.serverAddress;
   const [orders, setOrders] = useState([]);
+  const { loggedIn } = useAuth(); // Get the loggedIn status from the AuthContext
   const style = {
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%'
   };
+  
   useEffect(() => {
+    if (!loggedIn) return; // Don't fetch order history if user is not logged in
     // Fetch order history from your API
     axios
       .get(`${serverAddress}/api/orders/myOrders/`, {
@@ -31,7 +35,15 @@ function OrderHistory() {
       .catch((error) => {
         console.error('Error fetching order history:', error);
       });
-  }, []);
+  }, [loggedIn]); // Run useEffect when loggedIn status changes
+
+  if (!loggedIn) {
+    return (
+      <div className="order-history-container">
+        <h2>Please log in to view your order history.</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="order-history-container">
