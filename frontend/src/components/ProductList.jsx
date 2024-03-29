@@ -59,11 +59,13 @@ const StyledBoxImg = styled('img')({
 });
 
 function ProductList({ category }) {
+  const config = require('./config.json');
+  const serverAddress = config.serverAddress;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     // Define the API endpoint URL for fetching products
-    const apiUrl = `http://127.0.0.1:8000/api/products/?category=${category}`;
+    const apiUrl = `${serverAddress}/api/products/?category=${category}`;
 
     // Use Axios to fetch products from the Django backend
     axios
