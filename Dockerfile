@@ -1,11 +1,11 @@
-# Use the official Node.js 14 base image for the frontend build
-FROM node:14 AS frontend-builder
+# # Use the official Node.js 14 base image for the frontend build
+# FROM node:14 AS frontend-builder
 
-WORKDIR /app/frontend
-COPY frontend/package.json frontend/package-lock.json ./
-RUN npm install
-COPY frontend ./
-RUN npm run build
+# WORKDIR /app/frontend
+# COPY frontend/package.json frontend/package-lock.json ./
+# RUN npm install
+# COPY frontend ./
+# RUN npm run build
 
 # Use the official Python 3.10 base image for the backend
 FROM python:3.10 AS backend-builder
