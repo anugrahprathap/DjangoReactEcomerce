@@ -21,25 +21,19 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Footer from './components/Footer';
 import HeroImage from './components/Hero';
+import SearchResult from './components/SearchResults';
 
 function App() {
-  const [searchResults, setSearchResults] = useState([]);
-  const [isSearchResultsVisible, setSearchResultsVisible] = useState(false);
+ 
 
   // Handle the search results data and visibility
-  const handleSearchResults = (results) => {
-    setSearchResults(results);
-    setSearchResultsVisible(true);
-    
-  };
+  
 
   return (
     <Router>
       <div className="App">
-        <Navbar onSearchResults={handleSearchResults} />
-        {isSearchResultsVisible ? (
-          <SearchResults results={searchResults} />
-        ) : (
+        <Navbar  />
+        
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/topwear" element={<Topwear />} />
@@ -54,8 +48,9 @@ function App() {
             <Route path="/payment/:orderId" element={<PaymentPage />} />
             <Route path="/orders" element={<OrderHistory />} />
             <Route path="/CartCheckout" element={<CartCheckout />} />
+            <Route path="/search" element={<SearchResult/>}/>
           </Routes>
-        )}
+     
       </div>
     </Router>
   );
@@ -70,7 +65,6 @@ function Home() {
       <Electronics />
       <Footwear />
       <Footer/>
-
     </div>
   );
 }

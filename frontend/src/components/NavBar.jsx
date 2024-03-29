@@ -12,12 +12,12 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useAuth } from "../AuthContext"; // Import the useAuth hook
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css"; // Import your custom CSS
 
 function Navbar(props) {
   const config = require("./config.json");
-  const serverAddress = config.serverAddress;
+  const navigate = useNavigate();
   const { loggedIn, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResult, setSearchResults] = useState("");
@@ -39,18 +39,7 @@ function Navbar(props) {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    axios
-      .get(`${serverAddress}/api/products/search/?query=${searchQuery}`)
-      .then((response) => {
-        setSearchResults(response.data);
-        console.log(searchResult);
-        setShowSearchResults(true);
-        props.onSearchResults(response.data);
-      })
-      .catch((error) => {
-        console.error("Error searching products:", error);
-      });
-    console.log("Searching for:", searchQuery);
+    navigate(`/search?query=${searchQuery}`); 
   };
 
   return (
