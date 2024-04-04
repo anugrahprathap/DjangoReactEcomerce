@@ -54,8 +54,5 @@
   margin-left: 1rem;
 }
 
-@media (max-width: 400px) {
-  .hide-on-small-screen {
-    display: none; /* Hide the element on small screens */
-  }
-}
+
+/* Navbar.css */
