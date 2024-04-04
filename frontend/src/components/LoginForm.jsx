@@ -8,7 +8,7 @@ function LoginForm() {
 
   const config = require('./config.json');
   const serverAddress = config.serverAddress;
-  const { loggedIn } = useAuth();
+  const { loggedIn,setLoggedIn } = useAuth();
     const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
@@ -38,6 +38,7 @@ function LoginForm() {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.token); // Store the token in local storage
+        setLoggedIn(true)
         alert('Success');
         navigate('/');
       } else {

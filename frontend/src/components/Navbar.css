@@ -11,78 +11,51 @@
 }
 
 .navbar-logo {
-    color: aliceblue;
+    /* color: aliceblue; */
     text-decoration: none;
   }
-  
-  .search {
+  .search-items {
     display: flex;
-    justify-content: space-evenly;
-    background-color: rgb(201, 224, 224);
-    width: 45%;
-    height: 40px;
-    border-radius: 4px;
   }
   
-  .search input {
-    width: 80%;
-    height: 20px;
-    font-size: 1rem;
-    border: none;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
+  .search-items input {
+    flex: 1; /* Take up remaining space */
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    height: auto;
   }
   
-  .search-icon {
-    width: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    background-color: #febd68;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    color: #0F1111;
+  .search-items button {
+    height: auto; /* Match the height of the input field */
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    min-width: 45px;
   }
   
-  .border {
-    border: 2px solid transparent;
+.search-items{
+  display: flex;
+}
+
+  .search-item-input{
+    width: 55vw;
+    
   }
+ 
+.navbar-items{
+  display: flex;
+  flex-direction: row;
+  padding-left: 1rem;
+  align-items: center;
+  margin-right: 1rem;
   
-  .border:hover {
-    border: 1.4px solid white;
+}
+.navbar-items a{
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+@media (max-width: 400px) {
+  .hide-on-small-screen {
+    display: none; /* Hide the element on small screens */
   }
-  
-  .nav-cart {
-    display: flex;
-    font-size: 0.85rem;
-    font-weight: 700;
-  }
-  
-  .nav-cart-i {
-    font-size: 30px;
-  }
-  
-  .nav-cart p {
-    align-self: flex-end;
-  }
-  
-  .nav-return {
-    font-size: 0.75rem;
-    color: #ffff;
-    margin-top: 5px;
-    margin-bottom: 0px;
-  }
-  
-  .nav-sec {
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-top: 0px;
-    margin-bottom: 5px;
-  }
-  
-  .link-nav {
-    text-decoration: none;
-    color: #ffff;
-  }
-  
+}

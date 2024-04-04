@@ -1,16 +1,12 @@
 import React from "react";
-import { red } from "@mui/material/colors";
-import hero from '../images/hero_image.jpg'
-function HeroImage() {
-    const imageStyle = {
-        backgroundImage: `url(${hero})`, // Set background image
-        backgroundSize: 'cover' , // Accessing red color from MUI's color palette
-        width: '100%',
-        height: '400px',
-    };
+import hero from '../images/hero_image.jpg';
+import { Container } from 'react-bootstrap'; // Import Container component from Bootstrap
 
+function HeroImage() {
     return (
-        <div style={imageStyle}></div>
+        <Container fluid className="p-0" style={{ backgroundImage: `url(${hero})`, backgroundSize: 'cover', height: '400px' }}>
+            {/* No need for an extra div, directly apply styles */}
+        </Container>
     );
 }
 
