@@ -3,26 +3,43 @@
     color: #0F1111;
 }
 
-
-.toolbar{
-    background-color: #0F1111;
-    display: flex;
-    justify-content: space-evenly;
+.logo{
+  background-image: url('../images/amazon_logo.png');
+  background-size: cover;
+  height: 50px;
+  width: 100px;
 }
 
 .navbar-logo {
     /* color: aliceblue; */
     text-decoration: none;
   }
+  .navbar{
+margin-bottom: 0;
+}
+
+
+  .my-cart{
+
+    display: flex;  
+    font-size: 0.85rem;
+    font-weight: 7000;
+
+}
+
+.my-cart p{
+    align-self: flex-end;
+    margin-bottom: auto;
+}
   .search-items {
     display: flex;
   }
   
   .search-items input {
-    flex: 1; /* Take up remaining space */
+    flex: 1; 
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
-    height: auto;
+    height: max-content;
   }
   
   .search-items button {

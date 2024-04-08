@@ -14,7 +14,6 @@ import Topwear from './components/Topwear';
 import Electronics from './components/Electronics';
 import Footwear from './components/Footwear';
 import CartCheckout from './components/CartCheckout';
-import SearchResults from './components/SearchResults';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -22,6 +21,7 @@ import '@fontsource/roboto/700.css';
 import Footer from './components/Footer';
 import HeroImage from './components/Hero';
 import SearchResult from './components/SearchResults';
+import ToolBar from './components/ToolBar';
 
 function App() {
  
@@ -32,7 +32,9 @@ function App() {
   return (
     <Router>
       <div className="App">
+        
         <Navbar  />
+        <ToolBar/>
         
           <Routes>
             <Route path="/" element={<Home />} />

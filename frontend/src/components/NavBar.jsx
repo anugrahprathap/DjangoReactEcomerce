@@ -3,9 +3,15 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../AuthContext"; // Import the useAuth hook
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css"; // Import your custom CSS
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faCartShopping, faHouse, faUser } from '@fortawesome/free-solid-svg-icons';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearch,
+  faCartShopping,
+  faHouse,
+  faUser,
+  faRightToBracket,
+} from "@fortawesome/free-solid-svg-icons";
+import Dropdown from "react-bootstrap/Dropdown";
 
 function Navbar(props) {
   const navigate = useNavigate();
@@ -31,8 +37,9 @@ function Navbar(props) {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <Link to="/" className="navbar-brand navbar-logo mr-3 ml-3">
-        <FontAwesomeIcon icon={faHouse} style={{ color: 'white' }} />
+      <Link to="/" className="nav-logo border mr-3 ml-3">
+
+        <div className=" logo img-fluid"></div>
       </Link>
 
       <div className="nav-item search-item-input" id="navbarSupportedContent">
@@ -42,13 +49,18 @@ function Navbar(props) {
             type="text"
             placeholder="Search"
             onChange={(e) => setSearchQuery(e.target.value)}
-            style={{ borderBottomRightRadius: '0', borderTopRightRadius: '0' }}
+            style={{ borderBottomRightRadius: "0", borderTopRightRadius: "0" }}
           />
           <button
             className="btn-sm"
             type="submit"
             onClick={handleSearch}
-            style={{ borderBottomLeftRadius: '0', borderTopLeftRadius: '0', minWidth: '45px', height: '100%' }}
+            style={{
+              borderBottomLeftRadius: "0",
+              borderTopLeftRadius: "0",
+              minWidth: "45px",
+              height: "100%",
+            }}
           >
             <FontAwesomeIcon icon={faSearch} />
           </button>
@@ -57,42 +69,62 @@ function Navbar(props) {
 
       <div className="navbar-items d-sm-inline-flex mr-auto ml-auto">
         {loggedIn ? (
-          <div className="">
-            
-            <Dropdown data-bs-theme="dark"
-            style={{display:'flex',alignItems:'center'}}
+          <div className="border">
+            <Dropdown
+              data-bs-theme="dark"
+              style={{ display: "flex", alignItems: "center" }}
             >
-              <Dropdown.Toggle variant="secondary" id="dropdown-basic" style={{ color: 'white', backgroundColor: "#0000" }}>
+              <Dropdown.Toggle
+                variant="secondary"
+                id="dropdown-basic"
+                style={{ color: "white", backgroundColor: "#0000" }}
+              >
                 <FontAwesomeIcon icon={faUser} />
               </Dropdown.Toggle>
 
-              <Dropdown.Menu style={{ backgroundColor: '#343a40', border: 'none', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
-                <Dropdown.Item style={{ color: 'white' }} onClick={handleLogout}>
+              <Dropdown.Menu
+                style={{
+                  backgroundColor: "#343a40",
+                  border: "none",
+                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+                }}
+              >
+                <Dropdown.Item
+                  style={{ color: "white" }}
+                  onClick={handleLogout}
+                >
                   Logout
                 </Dropdown.Item>
                 {/* {/* <Dropdown.Item style={{ color: 'white' }} href="#/action-2">Another action</Dropdown.Item> */}
-                <Dropdown.Item style={{ color: 'white' }} href="/cart">Cart</Dropdown.Item> 
+                <Dropdown.Item style={{ color: "white" }} href="/cart">
+                  Cart
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
         ) : (
           <div className="nav-item ml-2">
-            <Link to="/login" className="text-white" style={{ color: 'white' }}>
-              Hello, sign in
+            <Link to="/login" className="text-white" style={{ color: "white" }}>
+              <FontAwesomeIcon icon={faRightToBracket} />
             </Link>
           </div>
         )}
 
-        {/* Potential Fix for Missing Collapse Functionality (Assuming JavaScript is Included): */}
-        <div className="nav-item justify-content-center collapse navbar-collapse">  {/* Added 'show' class for initial visibility */}
-          <Link to="/orders" className="text-white" style={{ color: 'white' }}>
+        <div className="nav-item justify-content-center collapse navbar-collapse border">
+          {" "}
+          {/* Added 'show' class for initial visibility */}
+          <Link to="/orders" className="text-white" style={{ color: "white" }}>
             Returns & Orders
           </Link>
         </div>
 
-        <div className="nav-item collapse navbar-collapse">
-          <Link to="/cart" className="text-white">
-            <FontAwesomeIcon icon={faCartShopping} style={{color:'white'}} />
+        <div className="collapse navbar-collapse  border">
+          <Link to="/cart" className="d-flex">
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              style={{ color: "white", fontSize: "2.5rem", paddingTop: "1px" }}
+            />
+            <sub style={{ color: "white", fontSize: "1rem" }}> Cart</sub>
           </Link>
         </div>
       </div>

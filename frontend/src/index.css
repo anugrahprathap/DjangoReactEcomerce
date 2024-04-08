@@ -1,13 +1,74 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+.toolbar{
+ 
+  background-color: rgb(35, 47, 62);
+  height: fit-content;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+}
+.toolbar-item{
+  color: #ffff;
+}
+.dropdown-button{
+  background-color:rgb(35, 47, 62) ;
+ 
+  color: white;
+  border:0;
+  display: flex;
+  flex-direction: row;
+  padding-left: 1rem;
+  font-size: 1rem;
+}
+.meterial-icons{
+align-self: flex-end;
+margin-left: 1rem;
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.dropdown-button:hover{
+  background-color:rgb(35, 47, 62) ;
+ 
+  color: white;
+  border:0;
+  display: flex;
+  flex-direction: row;
+  padding-left: 1rem;
+  
+  border: solid white 1px;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0; /* Off-screen by default */
+  width: 250px;
+  height: 100vh;
+  background-color:white;
+  transition: left 0.3s ease;
+  color: black;
+}
+
+.sidebar.show {
+  left: 0; /* Transition into view */
+}
+
+.sidebar-items {
+  padding: .5rem;
+  
+}
+
+.sidebar-item {
+  margin-bottom: .5rem;
+}
+
+.fa-bars {
+  color: white;
+  cursor: pointer;
+}
+.toolbar{
+  display: inline-flex;
+  justify-content: space-around;
 }
