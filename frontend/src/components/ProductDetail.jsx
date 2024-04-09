@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import {  useNavigate } from "react-router-dom"; // Import useNavigate
 import { useAuth } from "../AuthContext";
 import lock from "./../images/lock.png";
+import free from "./../images/free_shipping.png"
+import payod from './../images/payod.png'
 
 function ProductDetail({ match }) {
   const config = require("./config.json");
@@ -148,10 +150,34 @@ function ProductDetail({ match }) {
             }}
           />
         </div>
+        <div className="second-card">
+          <div className="">
+          <img src={free} alt="" />
+          <br />
+          <span>
+            Free Delivery
+          </span>
+          </div>
+          <div>
+          <img src={payod} alt="" />
+          <br />
+          <span className="">
+            Pay on Delivery
+          </span>
+          </div>
+          
+        </div>
+        <hr
+            style={{
+              border: "none",
+              borderTop: "1px solid #ccc",
+              margin: "20px 0",
+            }}
+          />
         <div className="quantity1">
           <label htmlFor="quantity">Quantity:&nbsp;</label>
           <select
-            className="form-select form-select-lg mb-3"
+            className="form-select form-select-lg "
             style={{ height: "2rem" }}
             aria-label=".form-select-lg example"
             id="quantity"
@@ -166,12 +192,15 @@ function ProductDetail({ match }) {
             ))}
           </select>
         </div>
+        <div className="product-details1">
         <h3>Specifications</h3>
         <p>Product Type: {product.ProductType}</p>
         <p>Category: {product.Category}</p>
         <p>Sub Category: {product.SubCategory}</p>
         <p>Usage: {product.Usage}</p>
         <p>Colour: {product.Colour}</p>
+        </div>
+        
       </div>
       <div className="col3">
         <div className=" box-product">

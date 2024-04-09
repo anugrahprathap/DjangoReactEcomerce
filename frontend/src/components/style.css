@@ -4,6 +4,7 @@
     
     font-family: Arial, Helvetica, sans-serif;
     border: border-box;
+    margin: 0;
 }
 .navbar {
     color: aliceblue;
@@ -202,6 +203,15 @@ h1{
     justify-content: left;
     height: 2rem;
     align-items: center;
+    
+}
+.quantity1 label{
+    margin: 1rem 0 2rem ;
+    
+}
+.quantity1 select{
+   height: 2rem;
+    margin-bottom: 1rem;
 }
 .box-product{
 
@@ -254,4 +264,28 @@ h1{
 .secure span{
     margin-left: 15px;
     color: #007185;
+}
+.secure span:hover{
+    color: #B12704;
+}
+.second-card{
+    display: flex;
+    
+    align-items: center;
+}
+.second-card img{
+    height: 50px;
+}
+.second-card span{
+    color: #007185;
+    font-size: .8rem;
+    margin-right: 10px;
+}
+.product-details1{
+    background-color: #f5f7f6;
+    border: 0;
+}
+.product-details1 p{
+    margin-top: 10px;
+    
 }
