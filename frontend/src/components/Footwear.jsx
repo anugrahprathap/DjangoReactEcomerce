@@ -3,7 +3,7 @@ import ProductList from './ProductList';
 
 function Footwear() {
   return (
-    <div>
+    <div className='mx-2'>
       <h2>Footwear</h2>
       <ProductList category="Sports Shoes" />
     </div>

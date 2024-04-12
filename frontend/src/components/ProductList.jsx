@@ -1,62 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import styled from '@mui/styled-engine-sc'; // Import styled from styled-engine-sc
-import './style.css';
-    
-
-const StyledContainer = styled('div')({
-  /* Add your container styles here */
-  display: 'flex',
-  overflowX: 'scroll',
-  flexFlow: 'column',
-  overflowY: 'hidden', // Enable horizontal scrolling
-  width: '100%',
-  height: '350px',
-  // whiteSpace: 'nowrap',
-  padding: '10px', // Add some padding for spacing
-  // margin:"20px",
-  backgroundColor: "#e2e7e6",
-  flexWrap:'wrap',
-  
-});
-
-const StyledPaper = styled(Paper)({
-  /* Add your Paper styles here */
-  color: '#0F1111',
-  display: 'flex',
-  flexWrap:"wrap",
-  margin: '15px',
-  backgroundColor: 'white',
-  height: '280px',
-  width: '311px',
-  padding: '20px 0px 15px',
-  borderRadius: '8px',
-});
-
-const StyledBoxContent = styled('div')({
-  /* Add your box content styles here */
-  color: '#0F1111',
-  marginLeft: '1rem',
-  marginRight: '1rem',
-  display: 'flex',
-  flexDirection: 'column', // Changed to column
-  flexWrap: 'wrap',
-  justifyContent: 'space-evenly',
-  alignItems: 'center',
-});
-
-const StyledBoxImg = styled('img')({
-  /* Add your box image styles here */
-
-  height: '150px',
-  width: '80%',
-  marginTop: '5px',
-  marginBottom: '1rem',
-  backgroundSize: 'cover',
-});
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 function ProductList({ category }) {
   const config = require('./config.json');
@@ -64,10 +13,8 @@ function ProductList({ category }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Define the API endpoint URL for fetching products
     const apiUrl = `${serverAddress}/api/products/?category=${category}`;
 
-    // Use Axios to fetch products from the Django backend
     axios
       .get(apiUrl)
       .then((response) => {
@@ -79,27 +26,131 @@ function ProductList({ category }) {
       });
   }, [category]);
 
-  return (
-    <StyledContainer>
-      {products.map((product) => (
-        <StyledPaper key={product.ProductId}>
-          <Link to={`/product/${product.ProductId}`} className="link">
-            <StyledBoxContent>
-              <Typography variant="h6">{product.ProductTitle}</Typography>
+  const PrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    console.log(className)
+    return (
+<div
+     
+      onClick={onClick}
+      style={{
+        ...style,
+        position: 'absolute',
+        top: '40%', 
+        display: 'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        left: '0',
+        zIndex: '10',
+        width: '2.813rem',
+        height: '6.25rem',
+        backgroundColor: 'white',
+        border: '1px solid lightgray',
+        textAlign: 'center', // Center the arrow vertically
+        lineHeight: '100px',
+        opacity:'.5',
+        borderRadius:'.3rem'
+      }}
+    >        <FontAwesomeIcon icon={faChevronLeft} style={{ color: 'black', fontSize: '2rem' }} />
 
-              {product.Image && (
-                <StyledBoxImg
-                  src={product.Image}
-                  alt={product.ProductId}
-                />
-              )}
-              <Typography variant="subtitle1">Price: ${product.Price}</Typography>
-              <Typography variant="subtitle1">Color: {product.Colour}</Typography>
-            </StyledBoxContent>
+    </div>
+    );
+  };
+
+  const NextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+      
+      onClick={onClick}
+      style={{
+        ...style,
+        position: 'absolute',
+        top: '40%', // Position vertically in the middle
+        right: '0', // Adjust this value as needed
+        zIndex: '10',
+        width: '2.813rem',
+        height: '6.25rem',
+        backgroundColor: 'white',
+        border: '1px solid lightgray',
+        borderRadius: '', // Make it circular
+        textAlign: 'center',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        opacity:'.5',
+        borderRadius:'.3rem'
+      }}
+    >
+      <FontAwesomeIcon icon={faChevronRight} style={{ color: 'black', fontSize: '2rem' }} />
+    </div>
+    );
+  };
+
+  // Configuration for the react-slick carousel
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4, // Number of slides to show initially
+    slidesToScroll: 4, // Number of slides to scroll
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
+  };
+
+  return (
+    <Slider {...settings}>
+      {products.map((product) => (
+        <div key={product.ProductId} className=''>
+          <Link to={`/product/${product.ProductId}`} className="text-decoration-none">
+            <div className="card mx-2 mb-2 product-card" style={{ height: '300px' }}>
+              <div className="card-body ">
+                <center>
+                  {product.Image && (
+                    <img
+                      src={product.Image}
+                      alt={product.ProductId}
+                      className=""
+                      style={{ height: '200px', objectFit: 'cover' }}
+                    />
+                  )}
+                </center>
+                <h3 className="card-title">{product.ProductTitle}({product.Colour})</h3>
+                <div className="d-flex ">
+                  <h2 className="">₹{product.Price}</h2>
+                  <span className="mx-2 my-1 discounted-price font-size-small ">
+                    M.R.P: <strike>₹{product.Price + 500}</strike> 
+                  </span>
+                </div>                 
+              </div>
+            </div>
           </Link>
-        </StyledPaper>
+        </div>
       ))}
-    </StyledContainer>
+    </Slider>
   );
 }
 

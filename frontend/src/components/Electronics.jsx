@@ -3,8 +3,8 @@ import ProductList from './ProductList';
 
 function Electronics() {
   return (
-    <div>
-      <h2>Electronics</h2>
+    <div className='mx-2'>
+      <h2>Shoes</h2>
       <ProductList category="Jeans" />
     </div>
   );

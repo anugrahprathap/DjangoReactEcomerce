@@ -1,0 +1,19 @@
+.product-card{
+    border:1px solid #f5f5f5;
+}
+.product-card img{
+mix-blend-mode: multiply;
+border: none;
+}
+.product-card .card-title{
+    color: #0f1111;
+    font-size: 1.7rem;
+}
+.product-card .card-title:hover{
+    color:#B12704;
+    
+}
+
+.discounted-price{
+    color: #565959;
+}

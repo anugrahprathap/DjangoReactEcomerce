@@ -4,7 +4,8 @@ import ssl from './../../images/lock.png'
 const CheckoutNav = () => {
   return (
     <nav className='banner-border checkout-nav'>
-        <img src={logo} alt=""  style={{height:'50px',width:"150px",color:'#0000'}}/>
+      <a href="/"><img src={logo} alt=""  style={{height:'50px',width:"150px",color:'#0000'}}/></a>
+        
         <h2>
             Checkout
         </h2>

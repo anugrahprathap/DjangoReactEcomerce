@@ -72,3 +72,11 @@ margin-left: 1rem;
   display: inline-flex;
   justify-content: space-around;
 }
+.main-page{
+  background-color: #e3e6e6;
+}
+.previous-arrow{
+  width: 2rem;
+  height: 4rem;
+  background-color: #e3e6e6;
+}

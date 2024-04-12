@@ -8,8 +8,8 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 const ToolBar = () => {
     return (
-        <div className='toolbar'>
-            <div className='border'style={{display:'flex',alignItems:'center    ',justifyContent:'center'}}>
+        <div className='toolbar font-size-small'>
+            <div className='border-blink'style={{display:'flex',alignItems:'center    ',justifyContent:'center'}}>
             <FontAwesomeIcon icon={faBars} style={{ color: 'white', fontSize: '1.5rem',marginLeft:'1rem',marginRight:'.2rem'}}/>
             <div></div>
             <span style={{ color: 'white', fontSize: '1.5rem',margin:'0'}}>All</span>
@@ -24,19 +24,19 @@ const ToolBar = () => {
                     <Dropdown.Item href="#">Item 3</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
-            <span className='border' style={{ color: 'white'}}>
+            <span className='border-blink' style={{ color: 'white'}}>
                 Fashion
             </span>
-            <span className='border' style={{ color: 'white'}}>
+            <span className='border-blink' style={{ color: 'white'}}>
                 New Releases
             </span>
-            <span className='border' style={{ color: 'white'}}>
+            <span className='border-blink' style={{ color: 'white'}}>
                 Customer Service
             </span>
-            <span className='border' style={{ color: 'white'}}>
+            <span className='border-blink' style={{ color: 'white'}}>
                 Best Sellers
             </span>
-            <span className='border' style={{ color: 'white'}}>
+            <span className='border-blink' style={{ color: 'white'}}>
                 Home & Kitchen
             </span>
         </div>

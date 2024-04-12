@@ -1,0 +1,212 @@
+/* Checkout.css */
+
+/* Container for the whole checkout page */
+.checkout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: #0f1111;
+    font-size: 1.3rem;
+  }
+  .checkout-main{
+    width: 60vw;
+  }
+  .checkout-header-add,.checkout-header-pay {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .checkout-header-item{
+    display: flex;
+    align-items:normal;
+    justify-content: space-between;
+  }
+  .checkout-header-item h3{
+    align-self: flex-start;
+  }
+  .shiping-header{
+    display: flex;
+    align-self: flex-start;
+    justify-content: space-between;
+  }
+
+  .shiping-header h1{
+    margin-right: 1rem;
+    
+  }
+
+  .checkout-container hr {
+    background-color: transparent;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top: 1px solid #BBBFBF;
+    display: block;
+    height: 1px;
+    line-height: 19px;
+    margin-bottom: 14px;
+    margin-top: 0;
+}
+.payment-methods{
+  display: block;
+
+}
+.payment-methods div{
+  display: flex;
+}
+
+.product-details{
+  margin-top: 2rem;
+  margin-left: 1.2rem;
+  border: 1px solid lightgray;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 14px 18px;
+  align-self: center;
+  width: 60vw;
+}
+.product-details h4{
+  color: #007600;
+}
+.product-details strong{
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-card{
+  
+  display: flex;
+}
+.product-card span{
+  display: flex ;
+
+  
+}
+.product-card label{
+  margin: 0;
+}
+.checkout-button-section{
+  margin-top: 2rem;
+  border: 1px solid lightgray;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 14px 18px;
+  justify-content: left;
+  width: 60vw;
+  display: flex;
+}
+.checkout-button-section button{
+  background-color: #ffd814;
+  border: 0;
+  padding: 10px 7px;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.3rem;
+}
+.checkout-button-section .span{
+  color: #b12704;
+  font-size: 18px;
+  margin-left: 10px;
+}
+.checkout-button-section .span1{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;  
+  margin-left: 10px;
+}
+
+.address-card-select{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  font-size: 1.3rem;
+  flex-wrap: wrap;
+
+}
+.address-card-select a{
+  color: #007185;
+}
+.address-card-select  a:hover,.selected-address a:hover{
+color: #b12704;
+text-decoration: underline;
+}
+
+.selected-address {
+  
+  border: 1px solid #FBD8B4;
+  background-color:  #fcf5ee;
+  border-radius: 1rem;/* Set the background color as per your design */
+}
+
+.address-card-select input{
+  margin-right: 1rem;
+}
+.address-card-select hr{
+  background-color: transparent;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top: 1px solid #BBBFBF;
+    display: block;
+    height: 1px;
+    line-height: 19px;
+    margin-bottom: 14px;
+    margin-top: 0;
+}
+.address-card-select div{
+  width: 100%;
+}
+.address-close{
+  display: flex;
+    align-items:flex-end;
+}
+
+
+
+
+
+
+
+.address-list-heading{
+ 
+ display: flex;
+ justify-content: space-between;
+}
+.address-list-heading .heading{
+  font-size: 2.5rem;
+ }
+.address-list{
+  margin-left: 3.5rem;
+  width: 50vw;
+  border:1px solid #BBBFBF;
+  padding: 2rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  
+}
+.address-list .span{
+  font-size: 22px;
+}
+.change-address-button{
+  padding: 1rem;
+  border: 0;
+  background-color: #ffd814;
+  border-radius: 1rem;
+}
+.change-address-div{
+  margin-top: 0;
+  margin-left: 3.5rem;
+  border:1px solid #BBBFBF;
+  border-top:0;
+  padding: 2rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  margin-bottom: 2rem;
+  background-color: #f0f2f2;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 50vw
+}

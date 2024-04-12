@@ -36,8 +36,8 @@ function Navbar(props) {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <Link to="/" className="nav-logo border mr-3 ml-3">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark font-size-small">
+      <Link to="/" className="nav-logo border-blink mr-3 ml-3">
 
         <div className=" logo img-fluid"></div>
       </Link>
@@ -69,7 +69,7 @@ function Navbar(props) {
 
       <div className="navbar-items d-sm-inline-flex mr-auto ml-auto">
         {loggedIn ? (
-          <div className="border">
+          <div className="border-blink">
             <Dropdown
               data-bs-theme="dark"
               style={{ display: "flex", alignItems: "center" }}
@@ -110,7 +110,7 @@ function Navbar(props) {
           </div>
         )}
 
-        <div className="nav-item justify-content-center collapse navbar-collapse border">
+        <div className="nav-item justify-content-center collapse navbar-collapse border-blink">
           {" "}
           {/* Added 'show' class for initial visibility */}
           <Link to="/orders" className="text-white" style={{ color: "white" }}>
@@ -118,7 +118,7 @@ function Navbar(props) {
           </Link>
         </div>
 
-        <div className="collapse navbar-collapse  border">
+        <div className="collapse navbar-collapse  border-blink">
           <Link to="/cart" className="d-flex">
             <FontAwesomeIcon
               icon={faCartShopping}

@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
-import AddressForm from "./AddressForm";
-import EditAddressForm from "./EditAddressForm";
+import EditAddressForm from "../EditAddressForm";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./Checkout.css"; // Import your CSS file
 import { useNavigate } from "react-router-dom";
-import Popup from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
+
 function Checkout() {
-  const config = require("./config.json");
+  const config = require("../config.json");
   const serverAddress = config.serverAddress;
   const navigate = useNavigate();
   const { productId } = useParams();

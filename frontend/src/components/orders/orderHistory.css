@@ -1,0 +1,115 @@
+.order-history-container {
+  
+ 
+ 
+}
+
+.order-card {
+  
+  border: 1px solid #ddd;
+  border-radius: .5rem;
+  
+}
+
+.order-details {
+  display: flex;
+  gap: 30px;
+  font-size: 1.2rem;
+  /* flex-wrap: wrap; */
+  justify-content:space-between;
+  width: 100%;
+ 
+}
+
+.product-image  {
+  max-width: 100px;
+  max-height: 100px;
+  
+  margin-bottom: 10px;
+}
+.product-image img {
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: cover;
+ 
+}
+.product-info {
+  flex: 1;
+}
+
+/* Add any additional styling as needed */
+.search-input{
+  display: flex;
+  border: 1px solid#ddd;
+}
+.search-order {
+  padding: 3px;
+  background-image: url('../../images/search\ \(1\).png');
+  background-size:15px;
+  opacity: .8;
+  background-repeat: no-repeat  ;
+  background-position: 6px 8px;
+  text-indent: 15px;
+}
+.order-history-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.order-history-header h1{
+  font-size: 2.5rem;
+}
+.order-search-button{
+  color: #f7f7f7;
+  background-color: #0F1111;
+  border: none;
+  border-radius: 2rem;
+  padding: 6px;
+  margin: 0 0 0 18px;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.order-type-list{
+  font-size: 1.3rem;
+}
+.order-type-list ul{
+  list-style: none;
+  display: flex;
+  justify-content: space-between ;
+  margin-top: 16px !important ;
+  margin-right: 15px;
+}
+.order-filter-section{
+  font-size: 1.3rem;
+}
+.order-filter-section .Dropdown{
+  width: fit-content;
+  background-color: #ddd;
+  padding: 6px;
+  border: 0;
+  border-radius: 1rem;
+  font-size: 1.3rem;
+}
+.order-filter-section .Dropdown-option{
+  width: fit-content;
+  background-color: #ffff;
+  font-size: 1.3rem;
+}
+.order-card-heading{
+  font-size: 1.2rem;
+  background-color: #f0f2f2;
+  padding: 1rem;
+}
+.buy-again{
+  border: 0;
+  border-radius: .8rem;
+  padding: .7rem;
+  background-color: #fccf03;
+  font-weight: 80;
+  
+}
+.view-item{
+  border-radius: .8rem;
+  background-color: transparent;
+  border: 1px solid #d8d2d2;
+}

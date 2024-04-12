@@ -130,7 +130,7 @@ function ProductDetail({ match }) {
             <img
               src={product.Image}
               alt={product.ProductId}
-              className="image-main border"
+              className="image-main "
             />
           )}
         </div>
@@ -210,7 +210,7 @@ function ProductDetail({ match }) {
         <div className="quantity1">
           <label htmlFor="quantity">Quantity:&nbsp;</label>
           <select
-            className="form-select form-select-lg "
+            className=""
             style={{ height: "2rem" }}
             aria-label=".form-select-lg example"
             id="quantity"
