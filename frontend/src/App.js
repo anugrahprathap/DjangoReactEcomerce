@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import ProductDetail from './components/ProductDetail';
@@ -22,45 +22,54 @@ import Footer from './components/Footer';
 import HeroImage from './components/Hero';
 import SearchResult from './components/SearchResults';
 import ToolBar from './components/ToolBar';
+import CheckoutNav from './components/checkout/Nav';
 
 function App() {
- 
-
-  // Handle the search results data and visibility
-  
-
   return (
     <Router>
       <div className="App">
-        
-        <Navbar  />
-        <ToolBar/>
-        
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/topwear" element={<Topwear />} />
-            <Route path="/electronics" element={<Electronics />} />
-            <Route path="/footwear" element={<Footwear />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/cart" element={<ShoppingCart />} />
-            <Route path="/register" element={<RegistrationForm />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/checkout/:productId" element={<Checkout />} />
-            <Route path="/editaddress/:addId" element={<EditAddressForm />} />
-            <Route path="/payment/:orderId" element={<PaymentPage />} />
-            <Route path="/orders" element={<OrderHistory />} />
-            <Route path="/CartCheckout" element={<CartCheckout />} />
-            <Route path="/search" element={<SearchResult/>}/>
-          </Routes>
-     
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/topwear" element={<WithNavbar><Topwear /></WithNavbar>} />
+          <Route path="/electronics" element={<WithNavbar><Electronics /></WithNavbar>} />
+          <Route path="/footwear" element={<WithNavbar><Footwear /></WithNavbar>} />
+          <Route path="/product/:id" element={<WithNavbar><ProductDetail /></WithNavbar>} />
+          <Route path="/cart" element={<WithNavbar><ShoppingCart /></WithNavbar>} />
+          <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/checkout/:productId" element={<WithCheckout><Checkout /></WithCheckout>} />
+          <Route path="/editaddress/:addId" element={<WithNavbar><EditAddressForm /></WithNavbar>} />
+          <Route path="/payment/:orderId" element={<WithNavbar><PaymentPage /></WithNavbar>} />
+          <Route path="/orders" element={<WithNavbar><OrderHistory /></WithNavbar>} />
+          <Route path="/CartCheckout" element={<WithNavbar><CartCheckout /></WithNavbar>} />
+          <Route path="/search" element={<WithNavbar><SearchResult/></WithNavbar>}/>
+        </Routes>
       </div>
     </Router>
+  );
+}
+
+function WithNavbar({ children }) {
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
+}
+function WithCheckout({children}){
+  return(
+    <>
+    <CheckoutNav/>
+    {children}
+    </>
   );
 }
 
 function Home() {
   return (
     <div>
+      <WithNavbar/>
       <h1>Welcome to Our Store</h1>
       <HeroImage/>
       <Topwear />

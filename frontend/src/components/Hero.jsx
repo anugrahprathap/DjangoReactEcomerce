@@ -4,8 +4,8 @@ import { Container } from 'react-bootstrap'; // Import Container component from 
 
 function HeroImage() {
     return (
-        <Container fluid className="p-0" style={{ backgroundImage: `url(${hero})`, backgroundSize: 'cover', height: '400px' }}>
-            {/* No need for an extra div, directly apply styles */}
+        <Container fluid className="p-0" style={{ backgroundImage: `url(${hero})`, backgroundSize: 'cover', height: '300px' }}>
+            
         </Container>
     );
 }

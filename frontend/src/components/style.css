@@ -215,10 +215,15 @@ h1{
 }
 .box-product{
 
-    
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+    /* border-radius: 8px; */
     padding: 10px 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid lightgray;
 }   
 .product-btn2{
     display: flex;
@@ -274,11 +279,13 @@ h1{
     align-items: center;
 }
 .second-card img{
-    height: 50px;
+    height: 35px;
 }
 .second-card span{
     color: #007185;
-    font-size: .8rem;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
     margin-right: 10px;
 }
 .product-details1{
@@ -288,4 +295,73 @@ h1{
 .product-details1 p{
     margin-top: 10px;
     
+}
+
+.wishlist{
+    display: flex;
+    width: 150px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    
+
+}
+.wishlist select{
+    align-self: flex-end;
+    width: 2.5rem;
+    border: 0px;
+}
+.wishlist span{
+    margin-left: 5px;
+    
+}
+.checkout-nav{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+
+}
+.checkout-nav h2{
+    color:#0F1111;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.checkout-nav .ssl{
+    height: 2rem;
+    width: 2rem;
+
+}
+.banner-border {
+    border-color: #ddd !important;
+    border-style: solid !important;
+    border-width: 0 0 1px 0 !important;
+    background-image: url('https://images-na.ssl-images-amazon.com/images/G/31/common/sprites/tspc-header-bkg.png');
+    height: 60px;
+    background-position-y: -13px;
+}
+
+.edit-address{
+    font-size: 1.5rem;
+}
+.model-header1{
+    background-color: #f0f2f2;
+}
+.model-body1 .button-custom{
+    font-size: 1.2rem;
+    border-radius: 1.3rem;
+    background-color:#ffd814;
+    color: #0F1111;
+}
+
+
+.model-body1 .button-custom:hover{
+    
+    background-color:#f8d10e;
+    
+}
+.model-body1{
+    padding: 16px 24px;
 }
