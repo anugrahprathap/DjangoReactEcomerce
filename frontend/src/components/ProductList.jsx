@@ -11,24 +11,27 @@ function ProductList({ category }) {
   const config = require('./config.json');
   const serverAddress = config.serverAddress;
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true); // State for loading status
 
   useEffect(() => {
+    setLoading(true); // Set loading to true when fetching data
     const apiUrl = `${serverAddress}/api/products/?category=${category}`;
 
     axios
       .get(apiUrl)
       .then((response) => {
-        console.log(response);
         setProducts(response.data);
+        setLoading(false); // Set loading to false after data is fetched
       })
       .catch((error) => {
         console.error('Error fetching products:', error);
+        setLoading(false); // Set loading to false on error
       });
   }, [category]);
 
   const PrevArrow = (props) => {
     const { className, style, onClick } = props;
-    console.log(className)
+  
     return (
 <div
      
@@ -121,37 +124,44 @@ function ProductList({ category }) {
     nextArrow: <NextArrow />,
   };
 
-  return (
-    <Slider {...settings}>
-      {products.map((product) => (
-        <div key={product.ProductId} className=''>
-          <Link to={`/product/${product.ProductId}`} className="text-decoration-none">
-            <div className="card mx-2 mb-2 product-card" style={{ height: '300px' }}>
-              <div className="card-body ">
-                <center>
-                  {product.Image && (
-                    <img
-                      src={product.Image}
-                      alt={product.ProductId}
-                      className=""
-                      style={{ height: '200px', objectFit: 'cover' }}
-                    />
-                  )}
-                </center>
-                <h3 className="card-title">{product.ProductTitle}({product.Colour})</h3>
-                <div className="d-flex ">
-                  <h2 className="">₹{product.Price}</h2>
-                  <span className="mx-2 my-1 discounted-price font-size-small ">
-                    M.R.P: <strike>₹{product.Price + 500}</strike> 
-                  </span>
-                </div>                 
-              </div>
+  return  (
+    <>
+      {loading && !products ? ( // Render loading spinner or message if loading
+        <div>Loading...</div>
+      ) : (
+        <Slider {...settings}>
+          {products.map((product) => (
+            <div key={product.ProductId} className="">
+              <Link to={`/product/${product.ProductId}`} className="text-decoration-none">
+                <div className="card mx-2 mb-2 product-card" style={{ height: '300px' }}>
+                  <div className="card-body">
+                    <center>
+                      {product.Image && (
+                        <img
+                          src={product.Image}
+                          alt={product.ProductId}
+                          className=""
+                          style={{ height: '200px', objectFit: 'cover' }}
+                        />
+                      )}
+                    </center>
+                    <h3 className="card-title">{product.ProductTitle}({product.Colour})</h3>
+                    <div className="d-flex">
+                      <h2 className="">₹{product.Price}</h2>
+                      <span className="mx-2 my-1 discounted-price font-size-small ">
+                        M.R.P: <strike>₹{product.Price + 500}</strike>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
             </div>
-          </Link>
-        </div>
-      ))}
-    </Slider>
+          ))}
+        </Slider>
+      )}
+    </>
   );
+    
 }
 
 export default ProductList;

@@ -20,6 +20,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register(r'products', apiView.ProductViewSet, basename='product')
 router.register(r'cart', apiView.AddToCartView,basename='cart')
+router.register(r'remove_from_cart',apiView.AddToCartView,basename='remove_from_cart')
 # router.register(r'orders', apiView.OrderViewSet)
 router.register(r'productdetail', apiView.ProductDetailViewSet, basename='productdetail')
 router.register(r'address', apiView.AddressViewSet, basename='address')

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import "./LoginForm.css";
 import { Link } from "react-router-dom";
+import logo from "../images/amazon-logo.png";
 
 function LoginForm() {
   const config = require("./config.json");
@@ -52,39 +53,54 @@ function LoginForm() {
     navigate("/");
   } else {
     return (
-      <div className="login-container">
-        <div className="login-content">
-          <h2>Login</h2>
-          <form className="login-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="username">Username:</label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <button type="submit">Login</button>
-          </form>
-          <p className="register-link">
-            Don't have an account? <Link to="/register">Register here</Link>
-          </p>
+      <div className=" col-md-12 login-container  ">
+        <div className="login-logo">
+          <img src={logo} alt="" />
         </div>
-      </div>
+        <div className="login-content">
+          
+            <span className="mx-5">Sign In</span>
+            <form className="login-form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="username">Email or phone number:</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password:</label>
+                <input
+                className="form-control"
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+              <button type="submit" className="form-control">Login</button>
+
+              </div>
+            </form>
+            
+          </div> 
+          <Link to="/register">
+          <div className=" form-control mt-4 button-border">
+          <p className="register-link">
+              Create your Amazon account
+            </p>
+          </div>
+          </Link>
+        </div>
+      
     );
   }
 }

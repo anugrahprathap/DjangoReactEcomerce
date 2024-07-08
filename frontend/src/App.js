@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import ProductDetail from './components/ProductDetail';
-import ShoppingCart from './components/ShoppingCart';
+import ShoppingCart from './components/cart/ShoppingCart';
 import Navbar from './components/NavBar';
 import RegistrationForm from './components/RegistrationForm';
 import LoginForm from './components/LoginForm';
@@ -24,20 +24,22 @@ import SearchResult from './components/search/SearchResults';
 import ToolBar from './components/ToolBar';
 import CheckoutNav from './components/checkout/Nav';
 import './components/style.css'
+import Cont from './components/Cont';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
+          <Route path='/aa' element={<Cont/>}/>
           <Route path="/" element={<Home />} />
           <Route path="/topwear" element={<WithNavbar><Topwear /></WithNavbar>} />
           <Route path="/electronics" element={<WithNavbar><Electronics /></WithNavbar>} />
           <Route path="/footwear" element={<WithNavbar><Footwear /></WithNavbar>} />
           <Route path="/product/:id" element={<WithNavbar><ProductDetail /></WithNavbar>} />
           <Route path="/cart" element={<WithNavbar><ShoppingCart /></WithNavbar>} />
-          <Route path="/register" element={<WithNavbar><RegistrationForm /></WithNavbar>} />
-          <Route path="/login" element={<WithNavbar><LoginForm /></WithNavbar>} />
+          <Route path="/register" element={<RegistrationForm />}/>
+          <Route path="/login" element={<LoginForm />}/>
           <Route path="/checkout/:productId" element={<WithCheckout><Checkout /></WithCheckout>} />
           <Route path="/editaddress/:addId" element={<WithNavbar><EditAddressForm /></WithNavbar>} />
           <Route path="/payment/:orderId" element={<WithNavbar><PaymentPage /></WithNavbar>} />

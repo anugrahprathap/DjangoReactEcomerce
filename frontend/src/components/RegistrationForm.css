@@ -1,69 +1,97 @@
 /* RegistrationForm.css */
 
 .registration-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0; /* Background color for the registration container */
-  }
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  background-color: #f0f0f0; /* Background color for the registration container */
+  height: 100vh;
+}
+.registration-container img{
+  height: 100px;
+  width: 200px; 
+}
+.registration-container label{
+  font-size: 13px;
+  margin: 0;
+  color: #0f1111;
+}
+.registration-container h2{
+  font-size: 28px;
+  font-weight: 100;
+}
+.registration-content {
+  width: 350px;
   
-  .registration-content {
-    width: 500px;
-    
-    text-align: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .registration-form {
-    /* Existing form styles */
-  }
-  
-  .form-group {
-    margin: 20px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    margin: 20px;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  button[type="submit"] {
-    background-color: #007bff; /* Button background color */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
+ 
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  .login-link {
-    margin-top: 10px;
-    font-size: 14px;
-  }
+
+
+
+
+.login-link {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.login-link a {
+  text-decoration: none;
+  color: #0066c0; /* Link color */
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline; /* Underline the link on hover */
+}
+.registration-content button {
+ 
+  /* padding: 10px 15px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e9ab10;
+  color: #0f1111;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
   
-  .login-link a {
-    text-decoration: none;
-    color: #99c2ee; /* Link color */
-    font-weight: bold;
-  }
-  
-  .login-link a:hover {
-    text-decoration: underline; /* Underline the link on hover */
-  }
+}
+
+.registration-content button:hover {
+  background-color: #fccf03;
+}
+
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  background-color: #e9ab10;; /* Button background color */
+   color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px; 
+}
+

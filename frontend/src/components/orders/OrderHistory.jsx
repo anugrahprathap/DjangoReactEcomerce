@@ -12,11 +12,11 @@ function OrderHistory() {
   const [orders, setOrders] = useState([]);
   const { loggedIn } = useAuth(); // Get the loggedIn status from the AuthContext
 
-  const style = {
-    display: "flex",
-    justifyContent: "space-between",
-    width: "100%",
-  };
+  // const style = {
+  //   display: "flex",
+  //   justifyContent: "space-between",
+  //   width: "100%",
+  // };
 
   useEffect(() => {
     if (!loggedIn) return; // Don't fetch order history if user is not logged in
@@ -35,7 +35,7 @@ function OrderHistory() {
           OrderDate: new Date(order.OrderDate).toLocaleString(), // Format the date
         }));
         setOrders(formattedOrders);
-        console.log(orders)
+        console.log(orders);
       })
       .catch((error) => {
         console.error("Error fetching order history:", error);
@@ -83,8 +83,11 @@ function OrderHistory() {
         </div>
         <hr />
         <div className="mt-4 d-flex  order-filter-section">
-        <span className="my-2"> <b>12 orders </b>
-          Palced in</span>
+          <span className="my-2">
+            {" "}
+            <b>12 orders </b>
+            Palced in
+          </span>
           <Dropdown className="mx-2">
             <Dropdown.Toggle
               className="Dropdown"
@@ -110,7 +113,8 @@ function OrderHistory() {
             <div className="order-card-heading">
               <div className="row">
                 <div className="col">
-                  <span>ORDER PLACED</span><br />
+                  <span>ORDER PLACED</span>
+                  <br />
                   <span>{order.OrderDate}</span>
                 </div>
                 <div className="col">
@@ -118,27 +122,54 @@ function OrderHistory() {
                   <br />
                   <span>{order.TotalPrice}</span>
                 </div>
-                <div className="col">
-                ORDER # {order.OrderId}
-                </div>
+                <div className="col">ORDER # {order.OrderId}</div>
               </div>
             </div>
-            <div className="order-details" style={style}>
-              <div className="product-image">
-                <img src={order.ProductDetails[0].Image} alt="Product" />
-              </div>
-              <div className="mt-5">
-                <h3>{order.ProductDetails[0].ProductTitle} ({order.ProductDetails[0].Color})</h3>
-                <p>Return window closed on 26-Dec-2019</p>
-                <div className="mb-4 d-flex">
-                <button className="buy-again">Buy it again</button>
-                <button className="mx-2 view-item">View your item</button>
-              </div>
-              </div>
-              
-              <div>
+            <div className="order-details">
+              <div className="mt-2 order-details-topic-flex">
+                <div>
+                <div className=" m-4">
+                <span style={{ fontSize: "18px" }}>Delivered 14-Mar-2024</span>
+                <br />
+                <span className="font-size-small">Package was handed to resident</span>
+              </div>  
+                <div className=" d-flex ">
+                  <div className="order-details-topic-flex">
+                    <img src={order.ProductDetails[0].Image} alt="Product" />
+                  </div>
+                  <div>
+                    <a href="#">
+                      {order.ProductDetails[0].ProductTitle} (
+                      {order.ProductDetails[0].Color})
+                    </a>
+                    <p>Return window closed on 26-Dec-2019</p>
+                    <div className="mb-4 d-flex">
+                      <button className="buy-again">Buy it again</button>
+                      <button className="mx-2 view-item">View your item</button>
+                    </div>
+                  </div>
+                </div>
+                </div>
                 
+                <div className="mt-0 track-review-buttons">
+                  <button className="mx-2 mb-2 track-item">
+                    Track package
+                  </button>
+                  <button className="mx-2 mb-2 product-support">
+                    Buy it again
+                  </button>
+                  <button className="mx-2 mb-2 track-item">
+                    Leave seller feedback
+                  </button>
+                  <button className="mx-2 mb-2 track-item">
+                    Leave delivery feedback
+                  </button>
+                  <button className="mx-2 mb-2 track-item">
+                    Write a product review
+                  </button>
+                </div>
               </div>
+
               {/* <div>
                 <p>
                   {" "}
@@ -147,8 +178,6 @@ function OrderHistory() {
                     : order.Status} on {order.OrderDate}
                 </p>
               </div> */}
-
-              <div className="product-info"></div>
             </div>
           </div>
         ))}

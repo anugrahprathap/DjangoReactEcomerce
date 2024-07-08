@@ -87,6 +87,7 @@ class ProductDetailViewSet(viewsets.ViewSet):
 class CartItemViewSet(viewsets.ModelViewSet):
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
+    
 
 
 
@@ -123,6 +124,20 @@ class AddToCartView(viewsets.ViewSet):
         serializer = CartItemSerializer(cartItem, many=True)
         # serlizer = CartItemSerializer(cartItem)
         return Response(serializer.data)
+    @action(detail=False, methods=['DELETE'])
+    def remove_from_cart(self, request):
+        
+        id = request.data.get('id')
+
+        # Get the cart item associated with the user and product
+        cart_item = CartItem.objects.filter(user=request.user, id=id).first()
+
+        if cart_item:
+            # Remove the cart item from the database
+            cart_item.delete()
+            return Response({'message': 'Item removed from cart successfully'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'Cart item not found'}, status=status.HTTP_404_NOT_FOUND)
     
 
 

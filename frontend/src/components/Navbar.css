@@ -51,10 +51,11 @@ margin-bottom: 0;
   
 .search-items{
   display: flex;
+  width: 55vw;
 }
 
   .search-item-input{
-    width: 55vw;
+    
     
   }
  
@@ -69,6 +70,29 @@ margin-bottom: 0;
 .navbar-items a{
   text-decoration: none;
   margin-left: 1rem;
+}
+.search-reconendation{
+  position: absolute;
+  top: 100%; /* Position below the search input */
+  /* left: 0; */
+  width: 100%; /* Take the full width of the parent container */
+  max-height: 650px;
+  background-color: #ffff; /* White background */
+  color: #0f1111;
+  width: 55vw;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  height: fit-content;
+
+}
+.search-reconendation a{
+  padding: 10px;
+  color: #0F1111;
+  text-decoration: none;
+}
+.search-reconendation a:hover{
+  background-color: #ddd;
 }
 
 

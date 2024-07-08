@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
 import './RegistrationForm.css'
 import { Link } from 'react-router-dom';
-
+import logo from '../images/amazon-logo.png'
 function RegistrationForm() {
   const config = require('./config.json');
   const serverAddress = config.serverAddress;
@@ -50,12 +50,16 @@ function RegistrationForm() {
 
   return (
     <div className="registration-container">
+      <Link to="/" >
+      <img src={logo} alt="" className='mt-4 mb-4' />
+      </Link>
       <div className="registration-content">
-        <h2>Register</h2>
+        <h2>Create Account</h2>
         <form onSubmit={handleSubmit} className="registration-form">
           <div className="form-group">
             <label htmlFor="username">Username:</label>
             <input
+            className='form-control'
               type="text"
               id="username"
               name="username"
@@ -65,8 +69,9 @@ function RegistrationForm() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email" >Email:</label>
             <input
+            className='form-control'
               type="email"
               id="email"
               name="email"
@@ -78,6 +83,7 @@ function RegistrationForm() {
           <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
+            className='form-control'
               type="password"
               id="password"
               name="password"
@@ -89,6 +95,7 @@ function RegistrationForm() {
           <div className="form-group">
             <label htmlFor="confirmPassword">Confirm Password:</label>
             <input
+              className='form-control'
               type="password"
               id="confirmPassword"
               name="confirmPassword"
@@ -97,8 +104,11 @@ function RegistrationForm() {
               required
             />
           </div>
+          <div className='form-group"'>
           {!passwordMatch && <p className="password-mismatch">Passwords do not match.</p>}
-          <button type="submit">Register</button>
+          <button type="submit" className='form-control'>Register</button>
+          </div>
+          
         </form>
         <p className="login-link"> Already have an account? <Link to="/login" >Login</Link></p>
       </div>

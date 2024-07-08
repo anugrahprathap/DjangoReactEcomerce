@@ -210,3 +210,12 @@ text-decoration: underline;
   font-weight: bold;
   width: 50vw
 }
+.change-address-button {
+  background-color: #f0c14b;; /* Button background color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
