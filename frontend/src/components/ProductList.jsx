@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 function ProductList({ category }) {
-
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // State for loading status
 
@@ -20,43 +22,46 @@ function ProductList({ category }) {
       .get(apiUrl)
       .then((response) => {
         setProducts(response.data);
-        setLoading(false); 
-        console.log(response.data);// Set loading to false after data is fetched
+        setLoading(false);
+        console.log(response.data); // Set loading to false after data is fetched
       })
       .catch((error) => {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
         setLoading(false); // Set loading to false on error
       });
   }, [category]);
 
   const PrevArrow = (props) => {
     const { className, style, onClick } = props;
-  
-    return (
-<div
-     
-      onClick={onClick}
-      style={{
-        ...style,
-        position: 'absolute',
-        top: '40%', 
-        display: 'flex',
-        justifyContent:'center',
-        alignItems:'center',
-        left: '0',
-        zIndex: '10',
-        width: '2.813rem',
-        height: '6.25rem',
-        backgroundColor: 'white',
-        border: '1px solid lightgray',
-        textAlign: 'center', // Center the arrow vertically
-        lineHeight: '100px',
-        opacity:'.5',
-        borderRadius:'.3rem'
-      }}
-    >        <FontAwesomeIcon icon={faChevronLeft} style={{ color: 'black', fontSize: '2rem' }} />
 
-    </div>
+    return (
+      <div
+        onClick={onClick}
+        style={{
+          ...style,
+          position: "absolute",
+          top: "40%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          left: "0",
+          zIndex: "10",
+          width: "2.813rem",
+          height: "6.25rem",
+          backgroundColor: "white",
+          border: "1px solid lightgray",
+          textAlign: "center", // Center the arrow vertically
+          lineHeight: "100px",
+          opacity: ".5",
+          borderRadius: ".3rem",
+        }}
+      >
+        {" "}
+        <FontAwesomeIcon
+          icon={faChevronLeft}
+          style={{ color: "black", fontSize: "2rem" }}
+        />
+      </div>
     );
   };
 
@@ -64,29 +69,31 @@ function ProductList({ category }) {
     const { className, style, onClick } = props;
     return (
       <div
-      
-      onClick={onClick}
-      style={{
-        ...style,
-        position: 'absolute',
-        top: '40%', // Position vertically in the middle
-        right: '0', // Adjust this value as needed
-        zIndex: '10',
-        width: '2.813rem',
-        height: '6.25rem',
-        backgroundColor: 'white',
-        border: '1px solid lightgray',
-        borderRadius: '', // Make it circular
-        textAlign: 'center',
-        display:'flex',
-        justifyContent:'center',
-        alignItems:'center',
-        opacity:'.5',
-        borderRadius:'.3rem'
-      }}
-    >
-      <FontAwesomeIcon icon={faChevronRight} style={{ color: 'black', fontSize: '2rem' }} />
-    </div>
+        onClick={onClick}
+        style={{
+          ...style,
+          position: "absolute",
+          top: "40%", // Position vertically in the middle
+          right: "0", // Adjust this value as needed
+          zIndex: "10",
+          width: "2.813rem",
+          height: "6.25rem",
+          backgroundColor: "white",
+          border: "1px solid lightgray",
+          borderRadius: "", // Make it circular
+          textAlign: "center",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          opacity: ".5",
+          borderRadius: ".3rem",
+        }}
+      >
+        <FontAwesomeIcon
+          icon={faChevronRight}
+          style={{ color: "black", fontSize: "2rem" }}
+        />
+      </div>
     );
   };
 
@@ -124,16 +131,22 @@ function ProductList({ category }) {
     nextArrow: <NextArrow />,
   };
 
-  return  (
+  return (
     <>
       {loading && !products ? ( // Render loading spinner or message if loading
         <div>Loading...</div>
       ) : (
         <Slider {...settings}>
-          {products.map((product) => (
+          {products.map((product,index) => (
             <div key={product.ProductId} className="">
-              <Link to={`/product/${product.ProductId}`} className="text-decoration-none">
-                <div className="card mx-2 mb-2 product-card" style={{ height: '300px' }}>
+              <Link
+                to={`/product/${product.ProductId}`}
+                className="text-decoration-none"
+              >
+                <div
+                  className="card mx-2 mb-2 product-card"
+                  style={{ height: "300px" }}
+                >
                   <div className="card-body">
                     <center>
                       {product.Image && (
@@ -141,11 +154,13 @@ function ProductList({ category }) {
                           src={product.Image}
                           alt={product.ProductId}
                           className=""
-                          style={{ height: '200px', objectFit: 'cover' }}
+                          style={{ height: "200px", objectFit: "cover" }}
                         />
                       )}
                     </center>
-                    <h3 className="card-title">{product.ProductTitle}({product.Colour})</h3>
+                    <h3 className="card-title">
+                      {product.ProductTitle}({product.Colour})
+                    </h3>
                     <div className="d-flex">
                       <h2 className="">₹{product.Price}</h2>
                       <span className="mx-2 my-1 discounted-price font-size-small ">
@@ -161,7 +176,6 @@ function ProductList({ category }) {
       )}
     </>
   );
-    
 }
 
 export default ProductList;
