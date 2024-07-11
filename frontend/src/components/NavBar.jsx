@@ -19,8 +19,7 @@ function Navbar(props) {
   
 
   const navigate = useNavigate();
-  const config = require("./config.json");
-  const serverAddress = config.serverAddress;
+
   const { loggedIn, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
   const [profileMenuOpen, setProfileMenuOpen] = useState(false); // State for the profile menu visibility
@@ -38,7 +37,7 @@ function Navbar(props) {
     const delayDebounceFn = setTimeout(() => {
       if (searchQuery !== "") {
         axios
-          .get(`${serverAddress}/api/products/search/?query=${searchQuery}`)
+          .get(`/api/products/search/?query=${searchQuery}`)
           .then((response) => {
             const data = response.data;
             console.log(data);
