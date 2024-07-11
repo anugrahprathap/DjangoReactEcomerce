@@ -20,7 +20,8 @@ function ProductList({ category }) {
       .get(apiUrl)
       .then((response) => {
         setProducts(response.data);
-        setLoading(false); // Set loading to false after data is fetched
+        setLoading(false); 
+        console.log(response.data);// Set loading to false after data is fetched
       })
       .catch((error) => {
         console.error('Error fetching products:', error);
