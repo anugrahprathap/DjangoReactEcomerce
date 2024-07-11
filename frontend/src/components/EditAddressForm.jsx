@@ -3,8 +3,7 @@ import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap'; // Import Modal and Button from react-bootstrap
 
 function EditAddressForm({ address, onSuccess }) {
-  const config = require('./config.json');
-  const serverAddress = config.serverAddress;
+  
   const [addressData, setAddressData] = useState({
     address_line1: address.address_line1,
     address_line2: address.address_line2 || '',
@@ -25,7 +24,7 @@ function EditAddressForm({ address, onSuccess }) {
 
     // Send a PUT request to update the address
     axios
-      .put(`${serverAddress}/api/address/${address.id}/edit_address/`, addressData, {
+      .put(`/api/address/${address.id}/edit_address/`, addressData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

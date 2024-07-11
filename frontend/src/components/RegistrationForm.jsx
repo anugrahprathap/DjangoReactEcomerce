@@ -5,8 +5,8 @@ import './RegistrationForm.css'
 import { Link } from 'react-router-dom';
 import logo from '../images/amazon-logo.png'
 function RegistrationForm() {
-  const config = require('./config.json');
-  const serverAddress = config.serverAddress;
+  // const config = require('./config.json');
+  // const serverAddress = config.serverAddress;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
@@ -34,7 +34,7 @@ function RegistrationForm() {
     }
 
     try {
-      const response = await axios.post(`${serverAddress}/api/register/`, formData);
+      const response = await axios.post(`/api/register/`, formData);
 
       if (response.status === 201) {
         alert('Registration Successful');

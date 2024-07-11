@@ -44,7 +44,7 @@ function PaymentPage() {
     try {
       // Send the order ID to the backend with a PUT request to update the status
       const response = await axios.put(
-        `${serverAddress}/api/orders/${orderId}/update_order/`, // Replace with your endpoint URL
+        `/api/orders/${orderId}/update_order/`, // Replace with your endpoint URL
         { status: "success" }, // Update the status to 'success'
         {
           headers: {

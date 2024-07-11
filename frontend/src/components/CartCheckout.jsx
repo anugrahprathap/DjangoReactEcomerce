@@ -3,8 +3,7 @@ import axios from 'axios';
 import './Checkout.css'; // Import your CSS file
 
 function CartCheckout() {
-  const config = require('./config.json');
-  const serverAddress = config.serverAddress;
+
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [addresses, setAddresses] = useState([]);
@@ -13,7 +12,7 @@ function CartCheckout() {
 
   useEffect(() => {
     // Fetch cart items and addresses from your API when the component loads
-    axios.get(`${serverAddress}/api/cart/get_queryset/`, {
+    axios.get(`/api/cart/get_queryset/`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       },
@@ -26,7 +25,7 @@ function CartCheckout() {
         console.error('Error fetching cart items:', error);
       });
 
-    axios.get(`${serverAddress}/api/address/`, {
+    axios.get(`/api/address/`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       },
@@ -62,7 +61,7 @@ function CartCheckout() {
         const productDetails = cartItem.product;
   
         // Create an order for the current product
-        const response = await axios.post(`${serverAddress}/api/orders/post/`, {
+        const response = await axios.post(`/api/orders/post/`, {
           address: selectedAddressId,
           items: [productDetails.ProductId],
           total_price: productDetails.Price * cartItem.quantity,

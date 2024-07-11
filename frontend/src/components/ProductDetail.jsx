@@ -8,8 +8,8 @@ import free from "./../images/free_shipping.png";
 import payod from "./../images/payod.png";
 
 function ProductDetail({ match }) {
-  const config = require("./config.json");
-  const serverAddress = config.serverAddress;
+  // const config = require("./config.json");
+  // const serverAddress = config.serverAddress;
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -29,7 +29,7 @@ function ProductDetail({ match }) {
         quantity: quantity,
       };
       axios
-        .post(`${serverAddress}/api/cart/add_to_cart/`, requestData, {
+        .post(`/api/cart/add_to_cart/`, requestData, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -66,7 +66,7 @@ function ProductDetail({ match }) {
 
   useEffect(() => {
     axios
-      .get(`${serverAddress}/api/productdetail/${id}/`)
+      .get(`/api/productdetail/${id}/`)
       .then((response) => {
         setProduct(response.data);
         setLoading(false);

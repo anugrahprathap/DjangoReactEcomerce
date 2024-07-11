@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 import logo from "../images/amazon-logo.png";
 
 function LoginForm() {
-  const config = require("./config.json");
-  const serverAddress = config.serverAddress;
+
   const { loggedIn, setLoggedIn } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -27,7 +26,7 @@ function LoginForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${serverAddress}/api/login/`, {
+      const response = await fetch(`/api/login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

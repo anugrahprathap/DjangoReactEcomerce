@@ -3,8 +3,7 @@ import axios from 'axios';
 
 function AddressForm({ onSuccess }) {
 
-  const config = require('./config.json');
-  const serverAddress = config.serverAddress;
+ 
   const [addressData, setAddressData] = useState({
     address_line1: '',
     address_line2: '',
@@ -22,7 +21,7 @@ function AddressForm({ onSuccess }) {
     e.preventDefault();
 
     // Send a POST request to your Django API to create the address
-    axios.post(`${serverAddress}/api/address/create_address/`, addressData, {
+    axios.post(`/api/address/create_address/`, addressData, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
