@@ -137,7 +137,7 @@ function ProductList({ category }) {
         <div>Loading...</div>
       ) : (
         <Slider {...settings}>
-          {products.map((product,index) => (
+          {products && products.map((product,index) => (
             <div key={product.ProductId} className="">
               <Link
                 to={`/product/${product.ProductId}`}
