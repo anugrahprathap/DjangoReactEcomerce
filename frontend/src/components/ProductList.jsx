@@ -133,7 +133,7 @@ function ProductList({ category }) {
 
   return (
     <>
-      {loading && !products ? ( // Render loading spinner or message if loading
+      {loading && !products.length ? ( // Render loading spinner or message if loading
         <div>Loading...</div>
       ) : (
         <Slider {...settings}>
