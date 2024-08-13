@@ -93,7 +93,7 @@ function ShoppingCart() {
           
           </div>
           <hr className="mt-0" />
-          {cartItems.map((item) => (
+          {Array.isArray(cartItems) && cartItems.map((item) => (
             <div className="d-flex mt-2 cart-item" key={item.id}>
               <input type="checkbox" name="" className="mx-2" id={item.id} />
               <img

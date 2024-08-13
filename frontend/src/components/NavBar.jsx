@@ -109,7 +109,7 @@ function Navbar(props) {
             <a href="#" onClick={(e) => handleSearch(e, searchQuery)}>
               {searchQuery}
             </a>
-            {results.slice(0, 10).map((result, index) => (
+            {Array.isArray(results) && results.slice(0, 10).map((result, index) => (
               <a href="#" key={index} onClick={(e) => handleSearch(e, result.ProductTitle)}>
                 {result.ProductTitle}
               </a>

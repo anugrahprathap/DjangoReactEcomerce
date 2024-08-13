@@ -97,7 +97,7 @@ function CartCheckout() {
     <div className="checkout-container">
       <h2 className="checkout-header">Checkout</h2>
       <div className="cart-items">
-        {cartItems.map(item => (
+        {Array.isArray(cartItems) && cartItems.map(item => (
           <div className="cart-item" key={item.id}>
             <p>{item.product.ProductTitle} - ${item.product.Price} - Quantity:
             <select
@@ -138,7 +138,7 @@ function CartCheckout() {
               <div>
                 <select value={selectedAddress} onChange={e => setSelectedAddress(e.target.value)}>
                   <option value="">Select an address</option>
-                  {addresses.map(address => (
+                  {Array.isArray(addresses) && addresses.map(address => (
                     <option key={address.id} value={address.id}>
                       {address.address_line1}
                     </option>

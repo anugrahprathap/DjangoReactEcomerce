@@ -13,7 +13,7 @@ const Cont = () => {
             }} />
           </div>
           <div className="template_Container">
-            {
+            {Array.isArray(data) && 
               data 
                 .filter((val) => {
                   if(searchTerm == ""){

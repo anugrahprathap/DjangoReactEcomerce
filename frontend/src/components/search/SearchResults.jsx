@@ -60,7 +60,7 @@ const SearchResult = () => {
         <h1 className="mt-4">Results</h1>
         <span className="font-size-small ">Price and other details may vary based on product size and colour.</span>
         <div className="row">
-          {currentProducts.map((result, index) => (
+          { Array.isArray(currentProducts) && currentProducts.map((result, index) => (
             <div key={index} className="col-md-4 mt-4">
               <Link to={`/product/${result.ProductId}`} className="text-decoration-none">
                 <div className="card product-card">

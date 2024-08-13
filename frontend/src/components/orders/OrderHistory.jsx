@@ -105,7 +105,7 @@ function OrderHistory() {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        {orders.map((order) => (
+        {Array.isArray(orders) && orders.map((order) => (
           <div key={order.OrderId} className="mt-2  order-card">
             <div className="order-card-heading">
               <div className="row">
