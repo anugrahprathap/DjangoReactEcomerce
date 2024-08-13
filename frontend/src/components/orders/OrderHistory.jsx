@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./orderHistory.css"; // Import your CSS file
 import { useAuth } from "../../AuthContext"; // Import the useAuth hook
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown } from "react-bootstrap";
 
 function OrderHistory() {
-  const config = require("../config.json");
-  const serverAddress = config.serverAddress;
+
   const [orders, setOrders] = useState([]);
   const { loggedIn } = useAuth(); // Get the loggedIn status from the AuthContext
 
@@ -22,7 +19,7 @@ function OrderHistory() {
     if (!loggedIn) return; // Don't fetch order history if user is not logged in
     // Fetch order history from your API
     axios
-      .get(`${serverAddress}/api/orders/myOrders/`, {
+      .get(`/api/orders/myOrders/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

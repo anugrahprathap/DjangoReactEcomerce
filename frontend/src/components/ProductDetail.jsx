@@ -8,8 +8,6 @@ import free from "./../images/free_shipping.png";
 import payod from "./../images/payod.png";
 
 function ProductDetail({ match }) {
-  // const config = require("./config.json");
-  // const serverAddress = config.serverAddress;
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   const { id } = useParams();

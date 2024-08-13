@@ -5,8 +5,6 @@ import './RegistrationForm.css'
 import { Link } from 'react-router-dom';
 import logo from '../images/amazon-logo.png'
 function RegistrationForm() {
-  // const config = require('./config.json');
-  // const serverAddress = config.serverAddress;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',

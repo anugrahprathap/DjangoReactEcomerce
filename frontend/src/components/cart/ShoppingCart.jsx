@@ -8,14 +8,13 @@ import {
   faCheck
 } from "@fortawesome/free-solid-svg-icons";
 function ShoppingCart() {
-  const config = require("../config.json");
-  const serverAddress = config.serverAddress;
+ 
   const [cartItems, setCartItems] = useState([]);
   const { loggedIn } = useAuth(); // Get the loggedIn status from the AuthContext
   const [totalPrice,settotalPrice] = useState('')
   const feachData = () => {
     axios
-    .get(`${serverAddress}/api/cart/get_queryset/`, {
+    .get(`/api/cart/get_queryset/`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -45,7 +44,7 @@ function ShoppingCart() {
 
   const handleRemoveItem = (itemId) => {
     
-      axios.delete(`${serverAddress}/api/cart/remove_from_cart/`, {
+      axios.delete(`/api/cart/remove_from_cart/`, {
         
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

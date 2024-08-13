@@ -11,13 +11,12 @@ const SearchResult = () => {
   const productsPerPage = 15;
   const [totalProducts, setTotalProducts] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const config = require("../config.json");
-  const serverAddress = config.serverAddress;
+ 
 
   useEffect(() => {
     if (query) {
       axios
-        .get(`${serverAddress}/api/products/search/?query=${query}`)
+        .get(`/api/products/search/?query=${query}`)
         .then((response) => {
           const data = response.data;
           console.log(data);

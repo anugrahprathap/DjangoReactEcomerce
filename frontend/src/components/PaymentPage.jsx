@@ -17,8 +17,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function PaymentPage() {
-  const config = require("./config.json");
-  const serverAddress = config.serverAddress;
   const navigate = useNavigate();
   const { orderId } = useParams();
   const [selectedPayment, setSelectedPayment] = useState("");
